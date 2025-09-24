@@ -7,6 +7,17 @@ import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
+
+type ConfirmationData = {
+  name: string;
+  email: string;
+  phone: string | null;
+  confirmation: boolean;
+  number_guests: string | null;
+  alergies: string | null;
+  message: string | null;
+};
 
 const RSVPSection = () => {
   const [formData, setFormData] = useState({
@@ -19,19 +30,55 @@ const RSVPSection = () => {
     message: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Simulate form submission
-    setTimeout(() => {
+    if (!formData.name || !formData.email || !formData.attendance) {
+      toast({
+        title: "Error",
+        description: "Por favor completa todos los campos requeridos.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const { error } = await (supabase as any)
+        .from('confirmacion')
+        .insert({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || null,
+          confirmation: formData.attendance === 'yes',
+          number_guests: formData.companions || null,
+          alergies: formData.dietaryRestrictions || null,
+          message: formData.message || null
+        });
+
+      if (error) {
+        throw error;
+      }
+
       setIsSubmitted(true);
       toast({
         title: "¡Confirmación recibida!",
         description: "Gracias por confirmar tu asistencia. Te enviaremos más detalles por email.",
       });
-    }, 1000);
+    } catch (error) {
+      console.error('Error saving RSVP:', error);
+      toast({
+        title: "Error",
+        description: "Hubo un problema al guardar tu confirmación. Inténtalo de nuevo.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleInputChange = (field: string, value: string) => {
@@ -168,8 +215,9 @@ const RSVPSection = () => {
                 type="submit" 
                 className="w-full bg-gold hover:bg-gold-dark text-white font-sans"
                 size="lg"
+                disabled={isSubmitting}
               >
-                Confirmar Asistencia
+                {isSubmitting ? 'Enviando...' : 'Confirmar Asistencia'}
               </Button>
             </form>
           </CardContent>
