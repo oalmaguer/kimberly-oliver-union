@@ -18,9 +18,9 @@ const LocationSection = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-4">
           {/* Iglesia */}
-          <Card className="shadow-card bg-card border-0 overflow-hidden w-[450px] mx-auto">
+          <Card className="shadow-card bg-card border-0 overflow-hidden w-[350px]  mx-auto">
 
             <CardContent className="p-6">
               <h3 className="text-2xl font-serif text-gold mb-4">Ceremonia</h3>
@@ -44,7 +44,7 @@ const LocationSection = () => {
           </Card>
 
           {/* Recepción */}
-          <Card className="shadow-card bg-card border-0 overflow-hidden w-[450px] mx-auto">
+          <Card className="shadow-card bg-card border-0 overflow-hidden w-[350px] mx-auto">
 
             <CardContent className="p-6">
               <h3 className="text-2xl font-serif text-gold mb-4">Recepción</h3>

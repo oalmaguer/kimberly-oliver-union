@@ -1,52 +1,57 @@
-import { Users, Palette, Info } from 'lucide-react';
-
+import { Users, Palette, Info, Sparkles } from 'lucide-react';
+import womenImage from '@/assets/dresswomen.jpeg';
+import menImage from '@/assets/dresscmen.jpeg';
 const DressCodeSection = () => {
   return (
     <section id="vestimenta" className="py-20 bg-creamw">
-      <div className="max-w-4xl mx-auto px-4">
+      <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-8xl md:text-8xl font-serif text-gold mb-4 tangerine-regular">
+          <h2 className="text-6xl md:text-8xl font-serif text-gold mb-4 tangerine-regular">
             Código de Vestimenta
           </h2>
-          <p className="text-lg text-muted-foreground font-sans">
+          <p className="text-lg text-muted-foreground font-sans playfair">
             Ayúdanos a crear un ambiente elegante y armonioso
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
-          {/* Dress Code */}
-          <div className="text-center">
-            <div className="bg-gold/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Users className="w-10 h-10 text-gold" />
-            </div>
-            <h3 className="text-xl font-serif text-gold mb-2">Formal</h3>
-            <p className="text-muted-foreground font-sans text-sm">
-              Vestimenta elegante y formal para la ocasión especial
-            </p>
-          </div>
-
-          {/* Colors */}
-          <div className="text-center">
-            <div className="bg-gold/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Palette className="w-10 h-10 text-gold" />
-            </div>
-            <h3 className="text-xl font-serif text-gold mb-2">Colores</h3>
-            <p className="text-muted-foreground font-sans text-sm">
-              Tonos pasteles, dorados, beige y colores tierra
-            </p>
-          </div>
-
-          {/* Notes */}
-          <div className="text-center">
-            <div className="bg-gold/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Info className="w-10 h-10 text-gold" />
-            </div>
-            <h3 className="text-xl font-serif text-gold mb-2">Notas</h3>
-            <p className="text-muted-foreground font-sans text-sm">
-              Evitar blanco, negro y colores muy brillantes
-            </p>
+        {/* Style Guide Header */}
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 bg-gold/10 px-6 py-3 rounded-full">
+            <Sparkles className="w-5 h-5 text-gold" />
+            <span className="text-gold font-serif text-lg">Inspírate con estos looks</span>
           </div>
         </div>
+
+        {/* Women's Style Image */}
+        <div className="mb-16">
+          <h3 className="text-5xl font-serif text-gold mb-6 text-center tangerine-regular">Para Ellas</h3>
+          <div className="mx-auto max-w-5xl overflow-hidden rounded-xl ring-1 ring-gold/20 shadow-md">
+            {/* Replace src with the women's collage image path */}
+            <img
+              src={womenImage}
+              alt="Inspiración de vestidos elegantes"
+              className="w-full h-[700px] object-contain rounded-xl drop-shadow-xl "
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        {/* Men's Style Image */}
+        <div className="mb-16">
+          <h3 className="text-5xl font-serif text-gold mb-6 text-center tangerine-regular">Para Ellos</h3>
+          <div className="mx-auto max-w-5xl overflow-hidden rounded-xl ring-1 ring-gold/20 shadow-md">
+            {/* Replace src with the men's collage image path */}
+            <img
+              src={menImage}
+              alt="Inspiración de trajes elegantes"
+              className="w-full h-[700px] object-contain rounded-xl drop-shadow-xl "
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        {/* Color Palette Guide */}
+  
 
         <div className="bg-cream rounded-lg p-8">
           {/* <div className="grid md:grid-cols-2 gap-8">

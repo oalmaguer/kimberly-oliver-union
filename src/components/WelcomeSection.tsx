@@ -14,7 +14,7 @@ const WelcomeSection = () => {
 
     const updateCountdown = () => {
       const now = new Date();
-      const difference = targetDate - now;
+      const difference = targetDate.getTime() - now.getTime();
 
       if (difference > 0) {
         const days = Math.floor(difference / (1000 * 60 * 60 * 24));
@@ -45,7 +45,7 @@ const WelcomeSection = () => {
 
       {/* Content */}
       <div className="relative max-w-4xl mx-auto px-4 text-center">
-        <h2 className="text-8xl md:text-8xl tangerine-regular parisienne text-gold mb-8">
+        <h2 className="text-6xl md:text-8xl tangerine-regular parisienne text-gold mb-8">
           Happily ever after
         </h2>
 
@@ -60,22 +60,22 @@ const WelcomeSection = () => {
           <hr className='border border-yellow-600 ' />
           <div className="text-center mt-8 ">
             <h3 className="text-2xl font-serif text-muted-foreground mb-4">COMING SOON!</h3>
-            <div className="flex justify-center space-x-8 tangerine-regular">
+            <div className="grid grid-cols-2 md:grid-cols-4 justify-items-center gap-6 md:gap-8 tangerine-regular">
               <div className="text-center tangerine-regular">
-                <p className="text-8xl font-bold text-gold">{timeLeft.days}</p>
-                <p className="text-2xl playfair">DAYS</p>
+                <p className="text-6xl md:text-8xl font-bold text-gold">{timeLeft.days}</p>
+                <p className="text-base md:text-2xl playfair">DAYS</p>
               </div>
               <div className="text-center tangerine-regular">
-                <p className="text-8xl font-bold text-gold">{timeLeft.hours}</p>
-                <p className="text-2xl playfair">HOURS</p>
+                <p className="text-6xl md:text-8xl font-bold text-gold">{timeLeft.hours}</p>
+                <p className="text-base md:text-2xl playfair">HOURS</p>
               </div>
               <div className="text-center tangerine-regular">
-                <p className="text-8xl font-bold text-gold">{timeLeft.minutes}</p>
-                <p className="text-2xl playfair">MINUTES</p>
+                <p className="text-6xl md:text-8xl font-bold text-gold">{timeLeft.minutes}</p>
+                <p className="text-base md:text-2xl playfair">MINUTES</p>
               </div>
               <div className="text-center tangerine-regular">
-                <p className="text-8xl font-bold text-gold">{timeLeft.seconds}</p>
-                <p className="text-2xl playfair">SECONDS</p>
+                <p className="text-6xl md:text-8xl font-bold text-gold">{timeLeft.seconds}</p>
+                <p className="text-base md:text-2xl playfair">SECONDS</p>
               </div>
             </div>
           </div>
