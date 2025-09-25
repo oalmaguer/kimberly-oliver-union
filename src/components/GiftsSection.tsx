@@ -1,17 +1,31 @@
-import { Gift, CreditCard, MapPin } from 'lucide-react';
+import { useState } from 'react';
+import { Gift, CreditCard, MapPin, Clipboard } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+
+const copyToClipboard = (text) => {
+  navigator.clipboard.writeText(text).then(() => {
+    alert('Texto copiado al portapapeles');
+  });
+};
 
 const GiftsSection = () => {
+  const [modalContent, setModalContent] = useState('');
+
+  const handleOpenModal = (content) => {
+    setModalContent(content);
+  };
+
   return (
-    <section id="regalos" className="py-20 bg-cream">
+    <section id="regalos" className="py-20 bg-warm-white">
       <div className="max-w-4xl mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-serif text-gold mb-4">
+          <h2 className="text-8xl md:text-8xl font-serif text-gold mb-4 tangerine-regular">
             Lista de Regalos
           </h2>
           <p className="text-lg text-muted-foreground font-sans max-w-2xl mx-auto">
-            Tu presencia es nuestro mayor regalo, pero si deseas obsequiarnos algo, 
+            Tu presencia es nuestro mayor regalo, pero si deseas obsequiarnos algo,
             aquí tienes algunas opciones que nos ayudarán a comenzar nuestra nueva vida juntos
           </p>
         </div>
@@ -27,8 +41,8 @@ const GiftsSection = () => {
               <p className="text-sm text-muted-foreground font-sans mb-4">
                 Liverpool & El Palacio de Hierro
               </p>
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 size="sm"
                 className="border-gold text-gold hover:bg-gold hover:text-white"
               >
@@ -47,13 +61,51 @@ const GiftsSection = () => {
               <p className="text-sm text-muted-foreground font-sans mb-4">
                 Para contribuir a nuestros sueños
               </p>
-              <Button 
-                variant="outline" 
-                size="sm"
-                className="border-gold text-gold hover:bg-gold hover:text-white"
-              >
-                Ver Datos
-              </Button>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="border-gold text-gold hover:bg-gold hover:text-white"
+                    onClick={() => handleOpenModal('transferencia')}
+                  >
+                    Ver Datos
+                  </Button>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle>Datos de la Transferencia</DialogTitle>
+                  </DialogHeader>
+                  <p className="text-sm text-muted-foreground font-sans flex items-center justify-between">
+                    Número de Tarjeta: 5579 1003 9392 9011
+                    <Clipboard
+                      className="cursor-pointer text-gold hover:text-gold-dark"
+                      onClick={() => copyToClipboard('5579 1003 9392 9011')}
+                    />
+                  </p>
+                  <p className="text-sm text-muted-foreground font-sans flex items-center justify-between">
+                    Banco: Santander
+                    <Clipboard
+                      className="cursor-pointer text-gold hover:text-gold-dark"
+                      onClick={() => copyToClipboard('Santander')}
+                    />
+                  </p>
+                  <p className="text-sm text-muted-foreground font-sans flex items-center justify-between">
+                    CLABE: 012345678901234567
+                    <Clipboard
+                      className="cursor-pointer text-gold hover:text-gold-dark"
+                      onClick={() => copyToClipboard('012345678901234567')}
+                    />
+                  </p>
+                  <p className="text-sm text-muted-foreground font-sans flex items-center justify-between">
+                    Nombre: Kimberly & Oliver
+                    <Clipboard
+                      className="cursor-pointer text-gold hover:text-gold-dark"
+                      onClick={() => copyToClipboard('Kimberly & Oliver')}
+                    />
+                  </p>
+                </DialogContent>
+              </Dialog>
             </CardContent>
           </Card>
 
@@ -67,13 +119,51 @@ const GiftsSection = () => {
               <p className="text-sm text-muted-foreground font-sans mb-4">
                 Ayúdanos a crear recuerdos únicos
               </p>
-              <Button 
-                variant="outline" 
-                size="sm"
-                className="border-gold text-gold hover:bg-gold hover:text-white"
-              >
-                Contribuir
-              </Button>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="border-gold text-gold hover:bg-gold hover:text-white"
+                    onClick={() => handleOpenModal('lunaDeMiel')}
+                  >
+                    Contribuir
+                  </Button>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle>Datos para Contribuir</DialogTitle>
+                  </DialogHeader>
+                  <p className="text-sm text-muted-foreground font-sans flex items-center justify-between">
+                    Número de Tarjeta: 1234 5678 9012 3456
+                    <Clipboard
+                      className="cursor-pointer text-gold hover:text-gold-dark"
+                      onClick={() => copyToClipboard('1234 5678 9012 3456')}
+                    />
+                  </p>
+                  <p className="text-sm text-muted-foreground font-sans flex items-center justify-between">
+                    Banco: Banco Ejemplo
+                    <Clipboard
+                      className="cursor-pointer text-gold hover:text-gold-dark"
+                      onClick={() => copyToClipboard('Banco Ejemplo')}
+                    />
+                  </p>
+                  <p className="text-sm text-muted-foreground font-sans flex items-center justify-between">
+                    CLABE: 012345678901234567
+                    <Clipboard
+                      className="cursor-pointer text-gold hover:text-gold-dark"
+                      onClick={() => copyToClipboard('012345678901234567')}
+                    />
+                  </p>
+                  <p className="text-sm text-muted-foreground font-sans flex items-center justify-between">
+                    Nombre: Kimberly & Oliver
+                    <Clipboard
+                      className="cursor-pointer text-gold hover:text-gold-dark"
+                      onClick={() => copyToClipboard('Kimberly & Oliver')}
+                    />
+                  </p>
+                </DialogContent>
+              </Dialog>
             </CardContent>
           </Card>
         </div>
@@ -81,11 +171,10 @@ const GiftsSection = () => {
         <div className="bg-warm-white rounded-lg p-8 text-center">
           <h4 className="text-xl font-serif text-gold mb-4">Información de Contacto</h4>
           <p className="text-muted-foreground font-sans mb-6">
-            Para más detalles sobre las opciones de regalo, puedes contactarnos directamente:
+            Para más detalles sobre las opciones de regalo, puedes contactar a traves de:
           </p>
           <div className="space-y-2 text-sm font-sans">
-            <p><strong>Kimberly:</strong> +52 (555) 123-4567</p>
-            <p><strong>Oliver:</strong> +52 (555) 987-6543</p>
+            <p><strong>Información de Contacto:</strong> +52 (555) 123-4567</p>
             <p><strong>Email:</strong> kimberly.oliver.boda@email.com</p>
           </div>
         </div>

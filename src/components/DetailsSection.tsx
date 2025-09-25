@@ -1,5 +1,5 @@
-import { Calendar, Clock, MapPin, Heart } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
+import { Calendar, Clock, MapPin, Heart } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 
 const DetailsSection = () => {
   return (
@@ -10,7 +10,8 @@ const DetailsSection = () => {
             Detalles del Evento
           </h2>
           <p className="text-lg text-muted-foreground font-sans max-w-2xl mx-auto">
-            Acompáñanos en estos dos momentos especiales que marcarán el inicio de nuestra vida juntos
+            Acompáñanos en estos dos momentos especiales que marcarán el inicio
+            de nuestra vida juntos
           </p>
         </div>
 
@@ -20,28 +21,30 @@ const DetailsSection = () => {
             <CardContent className="p-8">
               <div className="text-center mb-6">
                 <Heart className="w-12 h-12 text-gold mx-auto mb-4" />
-                <h3 className="text-2xl font-serif text-gold mb-2">Ceremonia Religiosa</h3>
+                <h3 className="text-2xl font-serif text-gold mb-2">
+                  Ceremonia Religiosa
+                </h3>
                 <div className="w-12 h-px bg-gold/30 mx-auto"></div>
               </div>
-              
+
               <div className="space-y-4">
                 <div className="flex items-center">
                   <Calendar className="w-5 h-5 text-gold mr-3 flex-shrink-0" />
-                  <span className="font-sans">Sábado, 15 de Marzo 2025</span>
+                  <span className="font-sans">Sábado, 31 de Enero 2026</span>
                 </div>
-                
+
                 <div className="flex items-center">
                   <Clock className="w-5 h-5 text-gold mr-3 flex-shrink-0" />
                   <span className="font-sans">4:00 PM</span>
                 </div>
-                
+
                 <div className="flex items-start">
                   <MapPin className="w-5 h-5 text-gold mr-3 flex-shrink-0 mt-0.5" />
                   <div className="font-sans">
-                    <div className="font-medium">Iglesia del Sagrado Corazón</div>
+                    <div className="font-medium">Iglesia Sagrada Familia</div>
                     <div className="text-sm text-muted-foreground">
-                      Av. Principal #123<br />
-                      Centro Histórico
+                      Calle Río de la Plata & Del Cisne.
+                      <br />Gaviotas, 82110, Mazatlán, Sin{" "}
                     </div>
                   </div>
                 </div>
@@ -54,28 +57,31 @@ const DetailsSection = () => {
             <CardContent className="p-8">
               <div className="text-center mb-6">
                 <Heart className="w-12 h-12 text-gold mx-auto mb-4" />
-                <h3 className="text-2xl font-serif text-gold mb-2">Recepción</h3>
+                <h3 className="text-2xl font-serif text-gold mb-2">
+                  Recepción
+                </h3>
                 <div className="w-12 h-px bg-gold/30 mx-auto"></div>
               </div>
-              
+
               <div className="space-y-4">
                 <div className="flex items-center">
                   <Calendar className="w-5 h-5 text-gold mr-3 flex-shrink-0" />
-                  <span className="font-sans">Sábado, 15 de Marzo 2025</span>
+                  <span className="font-sans">Sábado, 31 de Enero 2026</span>
                 </div>
-                
+
                 <div className="flex items-center">
                   <Clock className="w-5 h-5 text-gold mr-3 flex-shrink-0" />
-                  <span className="font-sans">7:00 PM - 2:00 AM</span>
+                  <span className="font-sans">5:00 PM - 1:00 AM</span>
                 </div>
-                
+
                 <div className="flex items-start">
                   <MapPin className="w-5 h-5 text-gold mr-3 flex-shrink-0 mt-0.5" />
                   <div className="font-sans">
-                    <div className="font-medium">Jardín Los Rosales</div>
+                    <div className="font-medium">Cerritos Resort</div>
                     <div className="text-sm text-muted-foreground">
-                      Carretera Norte Km 15<br />
-                      Salón de Eventos Principal
+                      Cerritos Resort
+                      <br />
+                      
                     </div>
                   </div>
                 </div>

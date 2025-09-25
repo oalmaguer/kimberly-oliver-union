@@ -8,9 +8,8 @@ const Navigation = () => {
   const navigationItems = [
     { name: 'Inicio', href: '#inicio' },
     { name: 'Bienvenida', href: '#bienvenida' },
-    { name: 'Detalles', href: '#detalles' },
-    { name: 'Itinerario', href: '#itinerario' },
     { name: 'Ubicación', href: '#ubicacion' },
+    { name: 'Itinerario', href: '#itinerario' },
     { name: 'Vestimenta', href: '#vestimenta' },
     { name: 'Regalos', href: '#regalos' },
     { name: 'RSVP', href: '#rsvp' },
@@ -24,7 +23,7 @@ const Navigation = () => {
           <div className="flex-shrink-0">
             <h1 className="text-2xl font-serif font-semibold text-gold">K & O</h1>
           </div>
-          
+
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">

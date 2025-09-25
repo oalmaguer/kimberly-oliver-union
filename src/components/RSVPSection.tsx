@@ -35,7 +35,7 @@ const RSVPSection = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!formData.name || !formData.email || !formData.attendance) {
       toast({
         title: "Error",
@@ -61,14 +61,22 @@ const RSVPSection = () => {
         });
 
       if (error) {
-        throw error;
+        if (error.code === '23505') { // Unique constraint violation
+          toast({
+            title: "Error",
+            description: "Este correo ya ha sido registrado.",
+            variant: "destructive"
+          });
+        } else {
+          throw error;
+        }
+      } else {
+        setIsSubmitted(true);
+        toast({
+          title: "¡Confirmación recibida!",
+          description: "Gracias por confirmar tu asistencia. Te enviaremos más detalles por email.",
+        });
       }
-
-      setIsSubmitted(true);
-      toast({
-        title: "¡Confirmación recibida!",
-        description: "Gracias por confirmar tu asistencia. Te enviaremos más detalles por email.",
-      });
     } catch (error) {
       console.error('Error saving RSVP:', error);
       toast({
@@ -90,7 +98,7 @@ const RSVPSection = () => {
 
   if (isSubmitted) {
     return (
-      <section id="rsvp" className="py-20 bg-warm-white">
+      <section id="rsvp" className="py-20 bg-cream">
         <div className="max-w-2xl mx-auto px-4 text-center">
           <div className="bg-gold/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
             <Check className="w-10 h-10 text-gold" />
@@ -105,10 +113,10 @@ const RSVPSection = () => {
   }
 
   return (
-    <section id="rsvp" className="py-20 bg-warm-white">
+    <section id="rsvp" className="py-20 bg-cream">
       <div className="max-w-2xl mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-serif text-gold mb-4">
+          <h2 className="text-8xl md:text-8xl font-serif text-gold mb-4 tangerine-regular">
             Confirma tu Asistencia
           </h2>
           <p className="text-lg text-muted-foreground font-sans">
@@ -130,7 +138,7 @@ const RSVPSection = () => {
                     className="border-gold/30 focus:border-gold"
                   />
                 </div>
-                
+
                 <div className="space-y-2">
                   <Label htmlFor="email" className="font-sans text-foreground">Email *</Label>
                   <Input
@@ -149,6 +157,7 @@ const RSVPSection = () => {
                 <Input
                   id="phone"
                   type="tel"
+                  required
                   value={formData.phone}
                   onChange={(e) => handleInputChange('phone', e.target.value)}
                   className="border-gold/30 focus:border-gold"
@@ -178,7 +187,7 @@ const RSVPSection = () => {
                     id="companions"
                     type="number"
                     min="0"
-                    max="5"
+                    max="50"
                     value={formData.companions}
                     onChange={(e) => handleInputChange('companions', e.target.value)}
                     className="border-gold/30 focus:border-gold"
@@ -211,8 +220,8 @@ const RSVPSection = () => {
                 />
               </div>
 
-              <Button 
-                type="submit" 
+              <Button
+                type="submit"
                 className="w-full bg-gold hover:bg-gold-dark text-white font-sans"
                 size="lg"
                 disabled={isSubmitting}
@@ -225,7 +234,7 @@ const RSVPSection = () => {
 
         <div className="mt-8 text-center">
           <p className="text-sm text-muted-foreground font-sans">
-            ¿Tienes problemas para enviar el formulario? 
+            ¿Tienes problemas para enviar el formulario?
             <br />Contacta directamente: <strong>kimberly.oliver.boda@email.com</strong>
           </p>
         </div>

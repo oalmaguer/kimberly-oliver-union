@@ -1,20 +1,34 @@
 import { useState } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { supabase } from '@/integrations/supabase/client';
+import GuestGallery from '@/pages/GuestGallery';
+import image1 from '@/assets/olikim.jpeg';
+import image2 from '@/assets/olikim2.jpeg';
+import image3 from '@/assets/olikim3.jpeg';
+import image4 from '@/assets/olikim4.jpeg';
+import image5 from '@/assets/olikim5.jpeg';
+import image6 from '@/assets/olikim6.jpeg';
+import image7 from '@/assets/olikim7.jpeg';
+import image8 from '@/assets/olikim8.jpeg';
 
 const GallerySection = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [name, setName] = useState('');
+  const [file, setFile] = useState(null);
+  const [showGuestGallery, setShowGuestGallery] = useState(false);
 
   // Placeholder images - en una implementación real, estas serían las URLs de las fotos reales
   const images = [
-    { id: 1, src: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80', alt: 'Momento especial 1' },
-    { id: 2, src: 'https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?w=800&q=80', alt: 'Momento especial 2' },
-    { id: 3, src: 'https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=800&q=80', alt: 'Momento especial 3' },
-    { id: 4, src: 'https://images.unsplash.com/photo-1594736797933-d0d83ba97cfc?w=800&q=80', alt: 'Momento especial 4' },
-    { id: 5, src: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800&q=80', alt: 'Momento especial 5' },
-    { id: 6, src: 'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=800&q=80', alt: 'Momento especial 6' },
-    { id: 7, src: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&q=80', alt: 'Momento especial 7' },
-    { id: 8, src: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&q=80', alt: 'Momento especial 8' },
+    { id: 1, src: image1, alt: 'Momento especial 1' },
+    { id: 2, src: image2, alt: 'Momento especial 2' },
+    { id: 3, src: image3, alt: 'Momento especial 3' },
+    { id: 4, src: image4, alt: 'Momento especial 4' },
+    { id: 5, src: image5, alt: 'Momento especial 5' },
+    { id: 6, src: image6, alt: 'Momento especial 6' },
+    { id: 7, src: image7, alt: 'Momento especial 7' },
+    { id: 8, src: image8, alt: 'Momento especial 8' },
   ];
 
   const openLightbox = (index: number) => {
@@ -27,7 +41,7 @@ const GallerySection = () => {
 
   const navigateImage = (direction: 'prev' | 'next') => {
     if (selectedImage === null) return;
-    
+
     if (direction === 'prev') {
       setSelectedImage(selectedImage === 0 ? images.length - 1 : selectedImage - 1);
     } else {
@@ -35,11 +49,34 @@ const GallerySection = () => {
     }
   };
 
+  const handleUpload = async () => {
+    if (!file || !name) {
+      alert('Please provide a name and select a file.');
+      return;
+    }
+
+    const { data, error } = await supabase.storage.from('guest_gallery').upload(`${name}-${file.name}`, file);
+
+    if (error) {
+      console.error('Error uploading file:', error);
+      alert('Failed to upload the photo.');
+    } else {
+      alert('Photo uploaded successfully!');
+      setIsModalOpen(false);
+      setName('');
+      setFile(null);
+    }
+  };
+
+  const toggleGuestGallery = () => {
+    setShowGuestGallery((prev) => !prev);
+  };
+
   return (
     <section id="galeria" className="py-20 bg-cream">
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-serif text-gold mb-4">
+          <h2 className="text-8xl md:text-8xl font-serif text-gold mb-4 tangerine-regular">
             Nuestra Historia en Imágenes
           </h2>
           <p className="text-lg text-muted-foreground font-sans">
@@ -64,18 +101,28 @@ const GallerySection = () => {
           ))}
         </div>
 
-        <div className="mt-12 text-center">
+        {/* <div className="mt-12 text-center">
           <p className="text-muted-foreground font-sans mb-6">
             ¿Tienes fotos especiales de nosotros que te gustaría compartir?
           </p>
-          <Button 
-            variant="outline" 
+          <Button
+            variant="outline"
             className="border-gold text-gold hover:bg-gold hover:text-white"
+            onClick={() => setIsModalOpen(true)}
           >
             Compartir Fotos
           </Button>
-        </div>
+          <Button
+            variant="outline"
+            className="ml-4 border-gold text-gold hover:bg-gold hover:text-white"
+            onClick={toggleGuestGallery}
+          >
+            Ver Galería de Invitados
+          </Button>
+        </div> */}
       </div>
+
+      {showGuestGallery && <GuestGallery />}
 
       {/* Lightbox Modal */}
       {selectedImage !== null && (
@@ -117,6 +164,35 @@ const GallerySection = () => {
 
           <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white text-sm">
             {selectedImage + 1} / {images.length}
+          </div>
+        </div>
+      )}
+
+      {/* Upload Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center">
+          <div className="bg-white p-6 rounded shadow-md">
+            <h2 className="text-lg font-bold mb-4">Subir Foto</h2>
+            <input
+              type="text"
+              placeholder="Nombre"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="border p-2 w-full mb-4"
+            />
+            <input
+              type="file"
+              onChange={(e) => setFile(e.target.files[0])}
+              className="border p-2 w-full mb-4"
+            />
+            <div className="flex justify-end gap-2">
+              <Button variant="outline" onClick={() => setIsModalOpen(false)}>
+                Cancelar
+              </Button>
+              <Button variant="outline" onClick={handleUpload}>
+                Subir
+              </Button>
+            </div>
           </div>
         </div>
       )}

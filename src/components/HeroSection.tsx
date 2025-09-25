@@ -1,42 +1,49 @@
-import heroImage from '@/assets/hero-wedding.jpg';
+import heroImage from '@/assets/olikim.jpeg';
+import heroImage2 from '@/assets/olikim2.jpeg';
+import heroImage3 from '@/assets/olikim3.jpeg';
 
 const HeroSection = () => {
   return (
     <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
-      <div className="absolute inset-0">
-        <img 
-          src={heroImage} 
-          alt="Kimberly y Oliver" 
-          className="w-full h-full object-cover"
+      <div className="absolute inset-0 flex items-center justify-center">
+        <img
+          src={heroImage2}
+          alt="Kimberly y Oliver"
+          className="w-full h-full object-cover "
+        />
+        <img
+          src={heroImage}
+          alt="Kimberly y Oliver"
+          className="w-full h-full object-cover "
+        />
+        <img
+          src={heroImage3}
+          alt="Kimberly y Oliver"
+          className="w-full h-full object-cover "
         />
         <div className="absolute inset-0 gradient-hero"></div>
       </div>
 
       {/* Content */}
       <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
-        <div className="mb-8">
-          <div className="text-lg font-sans font-light tracking-widest uppercase mb-4">
-            Nos Casamos
-          </div>
-          
-          <div className="mb-6">
-            <h1 className="text-6xl md:text-8xl font-serif font-light mb-2">
-              Kimberly
+        <div className="mt-24">
+
+
+          <div className="">
+            <h1 className="text-8xl md:text-8xl tangerine-regular font-light mb-2">
+              Kim
             </h1>
             <div className="flex items-center justify-center my-4">
               <div className="h-px bg-white/60 flex-1 max-w-20"></div>
-              <span className="mx-6 text-2xl font-serif">&</span>
+              <span className="mx-6 text-2xl tangerine-regular">&</span>
               <div className="h-px bg-white/60 flex-1 max-w-20"></div>
             </div>
-            <h1 className="text-6xl md:text-8xl font-serif font-light">
+            <h1 className="text-8xl md:text-8xl tangerine-regular font-light">
               Oliver
             </h1>
           </div>
 
-          <div className="text-xl font-sans font-light tracking-wider">
-            15.03.2025
-          </div>
         </div>
 
         <div className="animate-bounce">

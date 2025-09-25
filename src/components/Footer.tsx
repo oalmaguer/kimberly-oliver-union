@@ -11,7 +11,7 @@ const Footer = () => {
             <div className="w-12 h-px bg-gold"></div>
           </div>
           <h3 className="text-3xl font-serif text-gold mb-2">Kimberly & Oliver</h3>
-          <p className="text-sm font-sans opacity-80">15 de Marzo, 2025</p>
+          <p className="text-sm font-sans opacity-80">31 de Enero, 2026</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 mb-8">
@@ -26,9 +26,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-gold/20 pt-8">
-          <p className="text-sm font-sans opacity-60">
-            "El amor es la única fuerza capaz de transformar un enemigo en amigo." - Martin Luther King Jr.
-          </p>
+
           <p className="text-xs font-sans opacity-40 mt-4">
             Con amor, Kimberly & Oliver • 2025
           </p>

@@ -6,6 +6,10 @@
 All colors MUST be HSL.
 */
 
+html {
+  font-size: larger;
+}
+
 @layer base {
   :root {
     --background: 35 20% 98%;
@@ -37,7 +41,7 @@ All colors MUST be HSL.
     --ring: 35 45% 55%;
 
     /* Wedding Theme Colors */
-    --gold: 43 74% 66%;
+    --gold: #B17F59;
     --gold-light: 45 80% 80%;
     --gold-dark: 40 65% 45%;
     --champagne: 40 35% 85%;
@@ -125,13 +129,27 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
     font-family: 'Playfair Display', serif;
+
+
+
   }
 
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+
     font-family: 'Playfair Display', serif;
   }
 
-  p, span, div {
+  span,
+  div {
+    /* font-family: "Parisienne", cursive;
+    font-weight: 400;
+    font-style: normal; */
     font-family: 'Inter', sans-serif;
   }
 
@@ -180,7 +198,7 @@ All colors MUST be HSL.
   }
 
   .text-gold {
-    color: hsl(var(--gold));
+    color: #B17F59;
   }
 
   .text-gold-light {
@@ -204,10 +222,36 @@ All colors MUST be HSL.
   }
 
   .bg-warm-white {
-    background-color: hsl(var(--warm-white));
+    /* background-color: hsl(var(--warm-white)); */
+    background-color: #EDE8DC;
   }
 
   .border-gold {
     border-color: hsl(var(--gold));
   }
+
+  .parisienne {
+    font-family: "Parisienne", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .tangerine-regular {
+    font-family: "Tangerine", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .tangerine-bold {
+    font-family: "Tangerine", cursive;
+    font-weight: 700;
+    font-style: normal;
+  }
+
+
+  .playfair {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+  }
+
 }

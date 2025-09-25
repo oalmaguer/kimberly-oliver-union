@@ -2,10 +2,10 @@ import { Users, Palette, Info } from 'lucide-react';
 
 const DressCodeSection = () => {
   return (
-    <section id="vestimenta" className="py-20 bg-warm-white">
+    <section id="vestimenta" className="py-20 bg-creamw">
       <div className="max-w-4xl mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-serif text-gold mb-4">
+          <h2 className="text-8xl md:text-8xl font-serif text-gold mb-4 tangerine-regular">
             Código de Vestimenta
           </h2>
           <p className="text-lg text-muted-foreground font-sans">
@@ -49,8 +49,7 @@ const DressCodeSection = () => {
         </div>
 
         <div className="bg-cream rounded-lg p-8">
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Para Ellas */}
+          {/* <div className="grid md:grid-cols-2 gap-8">
             <div>
               <h4 className="text-2xl font-serif text-gold mb-4">Para Ellas</h4>
               <ul className="space-y-2 font-sans text-muted-foreground">
@@ -62,28 +61,27 @@ const DressCodeSection = () => {
               </ul>
             </div>
 
-            {/* Para Ellos */}
-            <div>
-              <h4 className="text-2xl font-serif text-gold mb-4">Para Ellos</h4>
-              <ul className="space-y-2 font-sans text-muted-foreground">
-                <li>• Traje completo en tonos oscuros</li>
-                <li>• Camisa blanca o en tonos claros</li>
-                <li>• Corbata o moño en colores complementarios</li>
-                <li>• Zapatos de vestir</li>
-                <li>• Saco obligatorio para la ceremonia</li>
-              </ul>
-            </div>
+          <div>
+            <h4 className="text-2xl font-serif text-gold mb-4">Para Ellos</h4>
+            <ul className="space-y-2 font-sans text-muted-foreground">
+              <li>• Traje completo en tonos oscuros</li>
+              <li>• Camisa blanca o en tonos claros</li>
+              <li>• Corbata o moño en colores complementarios</li>
+              <li>• Zapatos de vestir</li>
+              <li>• Saco obligatorio para la ceremonia</li>
+            </ul>
           </div>
+        </div> */}
 
           <div className="mt-8 p-4 bg-gold/10 rounded-lg">
             <p className="text-center text-sm font-sans text-gold-dark">
-              <strong>Recuerda:</strong> La ceremonia será al aire libre. Te sugerimos considerar 
+              <strong>Recuerda:</strong> La ceremonia será al aire libre. Te sugerimos considerar
               el clima y usar calzado apropiado para caminar en jardín.
             </p>
           </div>
         </div>
       </div>
-    </section>
+    </section >
   );
 };
 
