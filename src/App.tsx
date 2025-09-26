@@ -8,24 +8,29 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import InvitesList from "./pages/InvitesList";
 import GuestGallery from "./pages/GuestGallery";
+import { ColorProvider } from "./contexts/ColorContext";
+import ColorPalettePicker from "./components/ColorPalettePicker";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <HashRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/hidden/invites" element={<InvitesList />} />
-          <Route path="/guests_gallery" element={<GuestGallery />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </HashRouter>
-    </TooltipProvider>
+    <ColorProvider>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <HashRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/hidden/invites" element={<InvitesList />} />
+            <Route path="/guests_gallery" element={<GuestGallery />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </HashRouter>
+        <ColorPalettePicker />
+      </TooltipProvider>
+    </ColorProvider>
   </QueryClientProvider>
 );
 

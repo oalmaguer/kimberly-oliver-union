@@ -12,8 +12,13 @@ html {
 
 @layer base {
   :root {
-    --background: 35 20% 98%;
-    --foreground: 25 15% 15%;
+    --background: var(--color-background, 35 20% 98%);
+    --foreground: var(--color-text, 25 15% 15%);
+    
+    /* Dynamic color overrides */
+    --color-background: #faf7f0;
+    --color-text: #8b4513;
+    --color-gold: #d4af37;
 
     --card: 0 0% 100%;
     --card-foreground: 25 15% 15%;
@@ -40,14 +45,14 @@ html {
     --input: 40 15% 88%;
     --ring: 35 45% 55%;
 
-    /* Wedding Theme Colors */
-    --gold: #B17F59;
+    /* Wedding Theme Colors - Dynamic */
+    --gold: var(--color-gold, #B17F59);
     --gold-light: 45 80% 80%;
     --gold-dark: 40 65% 45%;
     --champagne: 40 35% 85%;
     --cream: 35 25% 95%;
     --sage: 85 15% 75%;
-    --warm-white: 35 15% 98%;
+    --warm-white: var(--color-background, 35 15% 98%);
 
     /* Gradients */
     --gradient-romantic: linear-gradient(135deg, hsl(var(--gold-light)) 0%, hsl(var(--champagne)) 50%, hsl(var(--cream)) 100%);
@@ -127,11 +132,9 @@ html {
   }
 
   body {
-    @apply bg-background text-foreground;
+    background-color: var(--color-background);
+    color: var(--color-text);
     font-family: 'Playfair Display', serif;
-
-
-
   }
 
 
@@ -222,12 +225,38 @@ html {
   }
 
   .bg-warm-white {
-    /* background-color: hsl(var(--warm-white)); */
-    background-color: #EDE8DC;
+    background-color: var(--color-background, #EDE8DC);
+  }
+
+  hr {
+   border: 1px solid var(--color-gold) !important;
+  }
+
+  .text-dynamic {
+    color: var(--color-text);
+  }
+
+  .bg-dynamic {
+    background-color: var(--color-background);
+  }
+
+  /* Override common text classes with dynamic color */
+  .text-foreground {
+    color: var(--color-text) !important;
+  }
+
+  .text-muted-foreground {
+    color: var(--color-text);
+    opacity: 0.7;
+  }
+
+  /* Update gold color dynamically */
+  .text-gold {
+    color: var(--color-gold) !important;
   }
 
   .border-gold {
-    border-color: hsl(var(--gold));
+    border-color: var(--color-gold);
   }
 
   .parisienne {
@@ -251,7 +280,25 @@ html {
 
   .playfair {
     font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
+    /* font-size: 1.2rem; */
+  }
+
+  .bodoni {
+    font-family: "Bodoni Moda", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .old-standard-regular {
+    font-family: "Old Standard TT", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .old-standard-bold {
+    font-family: "Old Standard TT", serif;
+    font-weight: 700;
+    font-style: normal;
   }
 
 }

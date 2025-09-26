@@ -98,7 +98,7 @@ const RSVPSection = () => {
 
   if (isSubmitted) {
     return (
-      <section id="rsvp" className="py-20 bg-cream">
+      <section id="rsvp" className="py-20 ">
         <div className="max-w-2xl mx-auto px-4 text-center">
           <div className="bg-gold/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
             <Check className="w-10 h-10 text-gold" />
@@ -113,7 +113,7 @@ const RSVPSection = () => {
   }
 
   return (
-    <section id="rsvp" className="py-20 bg-cream">
+    <section id="rsvp" className="py-20 ">
       <div className="max-w-2xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-8xl md:text-8xl font-serif text-gold mb-4 tangerine-regular">
