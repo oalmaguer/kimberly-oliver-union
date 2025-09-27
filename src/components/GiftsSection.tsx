@@ -13,18 +13,19 @@ const copyToClipboard = (text) => {
 const GiftsSection = () => {
   const [modalContent, setModalContent] = useState('');
 
+
   const handleOpenModal = (content) => {
     setModalContent(content);
   };
 
   return (
-    <section id="regalos" className="py-20 bg-warm-white">
+    <section id="regalos" className=" ">
       <div className="max-w-4xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-8xl md:text-8xl font-serif text-gold mb-4 tangerine-regular">
-            Lista de Regalos
+        <div className="text-center mb-4">
+          <h2 className="text-5xl md:text-8xl font-serif text-gold mb-4 old-standard-regular">
+            LISTA DE REGALOS
           </h2>
-          <p className="text-lg text-muted-foreground font-sans max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground raleway max-w-2xl mx-auto">
             Tu presencia es nuestro mayor regalo, pero si deseas obsequiarnos algo,
             aquí tienes algunas opciones que nos ayudarán a comenzar nuestra nueva vida juntos
           </p>
@@ -32,13 +33,13 @@ const GiftsSection = () => {
 
         <div className="grid md:grid-cols-3 gap-6 mb-12">
           {/* Mesa de Regalos */}
-          <Card className="shadow-card bg-card border-0 text-center">
-            <CardContent className="p-6">
+          <Card className="shadow-card  border-0 text-center">
+            <CardContent className="">
               <div className="bg-gold/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Gift className="w-8 h-8 text-gold" />
               </div>
-              <h3 className="text-lg font-serif text-gold mb-2">Mesa de Regalos</h3>
-              <p className="text-sm text-muted-foreground font-sans mb-4">
+              <h3 className="text-2xl lora font-serif text-gold mb-2">Mesa de Regalos</h3>
+              <p className="text-lg text-muted-foreground font-sans mb-4 raleway">
                 Liverpool & El Palacio de Hierro
               </p>
               <Button
@@ -52,132 +53,54 @@ const GiftsSection = () => {
           </Card>
 
           {/* Transferencia */}
-          <Card className="shadow-card bg-card border-0 text-center">
-            <CardContent className="p-6">
-              <div className="bg-gold/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+          <Card className="shadow-card  border-0 text-center">
+            <CardContent className="">
+              <div className="bg-gold/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto">
                 <CreditCard className="w-8 h-8 text-gold" />
               </div>
-              <h3 className="text-lg font-serif text-gold mb-2">Transferencia</h3>
-              <p className="text-sm text-muted-foreground font-sans mb-4">
+              <h3 className="text-2xl lora font-serif text-gold mb-2">Transferencia</h3>
+              <p className="text-lg text-muted-foreground font-sans mb-4 raleway">
                 Para contribuir a nuestros sueños
               </p>
-              <Dialog>
-                <DialogTrigger asChild>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="border-gold text-gold hover:bg-gold hover:text-white"
-                    onClick={() => handleOpenModal('transferencia')}
-                  >
-                    Ver Datos
-                  </Button>
-                </DialogTrigger>
-                <DialogContent>
-                  <DialogHeader>
-                    <DialogTitle>Datos de la Transferencia</DialogTitle>
-                  </DialogHeader>
-                  <p className="text-sm text-muted-foreground font-sans flex items-center justify-between">
-                    Número de Tarjeta: 5579 1003 9392 9011
-                    <Clipboard
-                      className="cursor-pointer text-gold hover:text-gold-dark"
-                      onClick={() => copyToClipboard('5579 1003 9392 9011')}
-                    />
-                  </p>
-                  <p className="text-sm text-muted-foreground font-sans flex items-center justify-between">
-                    Banco: Santander
-                    <Clipboard
-                      className="cursor-pointer text-gold hover:text-gold-dark"
-                      onClick={() => copyToClipboard('Santander')}
-                    />
-                  </p>
-                  <p className="text-sm text-muted-foreground font-sans flex items-center justify-between">
-                    CLABE: 012345678901234567
-                    <Clipboard
-                      className="cursor-pointer text-gold hover:text-gold-dark"
-                      onClick={() => copyToClipboard('012345678901234567')}
-                    />
-                  </p>
-                  <p className="text-sm text-muted-foreground font-sans flex items-center justify-between">
-                    Nombre: Kimberly & Oliver
-                    <Clipboard
-                      className="cursor-pointer text-gold hover:text-gold-dark"
-                      onClick={() => copyToClipboard('Kimberly & Oliver')}
-                    />
-                  </p>
-                </DialogContent>
-              </Dialog>
+              <div className="tarjeta text-md text-muted-foreground font-sans mb-4 flex flex-col gap-2">
+                <p className='raleway '>Deposito a cuenta Santander</p>
+                <p className='raleway'>Tarjeta: <span className="cursor-pointer text-gold hover:text-gold-dark underline " onClick={() => copyToClipboard('5579 1003 9392 9011')}>5579 1003 9392 9011</span></p>
+                <p className='raleway'>Nombre: Oliver Almaguer Tostado</p>
+             
+              </div>
+        
             </CardContent>
           </Card>
 
           {/* Luna de Miel */}
-          <Card className="shadow-card bg-card border-0 text-center">
-            <CardContent className="p-6">
+          <Card className="shadow-card  border-0 text-center">
+            <CardContent className="">
               <div className="bg-gold/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <MapPin className="w-8 h-8 text-gold" />
               </div>
-              <h3 className="text-lg font-serif text-gold mb-2">Luna de Miel</h3>
-              <p className="text-sm text-muted-foreground font-sans mb-4">
+              <h3 className="text-2xl lora font-serif text-gold mb-2">Luna de Miel</h3>
+              <p className="text-lg text-muted-foreground font-sans mb-4 raleway">
                 Ayúdanos a crear recuerdos únicos
               </p>
-              <Dialog>
-                <DialogTrigger asChild>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="border-gold text-gold hover:bg-gold hover:text-white"
-                    onClick={() => handleOpenModal('lunaDeMiel')}
+              <div className="tarjeta text-md text-muted-foreground font-sans mb-4 flex flex-col gap-2">
+                <p className="raleway ">Deposito a cuenta BBVA</p>
+                <p className="raleway">
+                  Tarjeta:{" "}
+                  <span
+                    className="cursor-pointer text-gold hover:text-gold-dark underline "
+                    onClick={() => copyToClipboard("4152 3144 0672 9254")}
                   >
-                    Contribuir
-                  </Button>
-                </DialogTrigger>
-                <DialogContent>
-                  <DialogHeader>
-                    <DialogTitle>Datos para Contribuir</DialogTitle>
-                  </DialogHeader>
-                  <p className="text-sm text-muted-foreground font-sans flex items-center justify-between">
-                    Número de Tarjeta: 1234 5678 9012 3456
-                    <Clipboard
-                      className="cursor-pointer text-gold hover:text-gold-dark"
-                      onClick={() => copyToClipboard('1234 5678 9012 3456')}
-                    />
-                  </p>
-                  <p className="text-sm text-muted-foreground font-sans flex items-center justify-between">
-                    Banco: Banco Ejemplo
-                    <Clipboard
-                      className="cursor-pointer text-gold hover:text-gold-dark"
-                      onClick={() => copyToClipboard('Banco Ejemplo')}
-                    />
-                  </p>
-                  <p className="text-sm text-muted-foreground font-sans flex items-center justify-between">
-                    CLABE: 012345678901234567
-                    <Clipboard
-                      className="cursor-pointer text-gold hover:text-gold-dark"
-                      onClick={() => copyToClipboard('012345678901234567')}
-                    />
-                  </p>
-                  <p className="text-sm text-muted-foreground font-sans flex items-center justify-between">
-                    Nombre: Kimberly & Oliver
-                    <Clipboard
-                      className="cursor-pointer text-gold hover:text-gold-dark"
-                      onClick={() => copyToClipboard('Kimberly & Oliver')}
-                    />
-                  </p>
-                </DialogContent>
-              </Dialog>
+                    4152 3144 0672 9254
+                  </span>
+                </p>
+               
+                <p className="raleway">Nombre: Kimberly Covarrubias</p>
+              </div>
             </CardContent>
           </Card>
         </div>
 
-        <div className="bg-warm-white rounded-lg p-8 text-center">
-          <h4 className="text-xl font-serif text-gold mb-4">Información de Contacto</h4>
-          <p className="text-muted-foreground font-sans mb-6">
-            Para más detalles sobre las opciones de regalo, puedes contactar a traves de:
-          </p>
-          <div className="space-y-2 text-sm font-sans">
-            <p><strong>Información de Contacto:</strong> +52 (555) 123-4567</p>
-            <p><strong>Email:</strong> kimberly.oliver.boda@email.com</p>
-          </div>
-        </div>
+   
       </div>
     </section>
   );

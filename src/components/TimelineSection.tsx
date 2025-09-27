@@ -72,11 +72,11 @@ const getEventColor = (type: TimelineEvent["type"]) => {
 
 export function WeddingTimeline() {
   return (
-    <section id="itinerario" className="pb-5 bg-warm-white">
+    <section id="itinerario" className="pb-5 ">
       <img className='w-full object-cover h-full mb-10 object-[10%_43%]' src={kimImage} alt="Itinerario" />
       <div className="max-w-4xl mx-auto p-6 ">
         <div className="text-center mb-12">
-          <h2 className="text-8xl md:text-8xl tangerine-regular text-primary mb-4 text-gold">Itinerario</h2>
+          <h2 className="text-4xl md:text-8xl old-standard-regular text-primary mb-4 text-gold">ITINERARIO</h2>
 
         </div>
 

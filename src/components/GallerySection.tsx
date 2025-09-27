@@ -73,15 +73,13 @@ const GallerySection = () => {
   };
 
   return (
-    <section id="galeria" className="py-20 ">
+    <section id="galeria" className="py-10 ">
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-8xl md:text-8xl font-serif text-gold mb-4 tangerine-regular">
-            Nuestra Historia en Imágenes
+          <h2 className="text-4xl md:text-8xl font-serif text-gold mb-4 old-standard-regular">
+            NUESTRA HISTORIA EN IMAGENES
           </h2>
-          <p className="text-lg text-muted-foreground font-sans">
-            Algunos de nuestros momentos más especiales juntos
-          </p>
+        
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">

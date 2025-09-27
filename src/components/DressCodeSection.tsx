@@ -1,25 +1,25 @@
 import { Users, Palette, Info, Sparkles } from 'lucide-react';
 import womenImage from '@/assets/dresswomen.jpeg';
 import menImage from '@/assets/dresscmen.jpeg';
+
+import dressImg from '@/assets/dress.png';
+import suitImg from '@/assets/suit.png';
 const DressCodeSection = () => {
   return (
     <section id="vestimenta" className="py-20 bg-creamw">
       <div className="max-w-6xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-6xl md:text-8xl font-serif text-gold mb-4 tangerine-regular">
-            Código de Vestimenta
+        <div className="text-center mb-8">
+          <h2 className="text-4xl md:text-8xl font-serif text-gold mb-4 old-standard-regular">
+            DRESSCODE
           </h2>
-          <p className="text-lg text-muted-foreground font-sans playfair">
+          <div className="suit-dress flex gap-4 justify-center m-6">
+            <img src={dressImg} className="w-1/4" alt="Inspiración de vestidos elegantes" />
+            <img src={suitImg} className="w-1/4" alt="Inspiración de trajes elegantes" />
+          </div>
+          <p className="text-2xl font-serif text-muted-foreground old-standard-regular mb-2">ETIQUETA</p>
+          <p className="text-lg text-muted-foreground font-sans raleway">
             Ayúdanos a crear un ambiente elegante y armonioso
           </p>
-        </div>
-
-        {/* Style Guide Header */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 bg-gold/10 px-6 py-3 rounded-full">
-            <Sparkles className="w-5 h-5 text-gold" />
-            <span className="text-gold font-serif text-lg">Inspírate con estos looks</span>
-          </div>
         </div>
 
         {/* Women's Style Image */}

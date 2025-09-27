@@ -67,7 +67,7 @@ const ColorPalettePicker = () => {
       {/* Floating Toggle Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 bg-gold text-white p-3 rounded-full shadow-lg hover:bg-gold/90 transition-all duration-300 hover:scale-110"
+        className="fixed top-20 right-6 z-50 bg-gold text-white p-3 rounded-full shadow-lg hover:bg-gold/90 transition-all duration-300 hover:scale-110"
         style={{ backgroundColor: gold }}
       >
         <Palette className="w-6 h-6" />

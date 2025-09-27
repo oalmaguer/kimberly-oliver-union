@@ -11,8 +11,8 @@ const LocationSection = () => {
       <img className='w-full object-cover h-[650px] mb-10 object-[10%_43%]' src={handsImage} alt="" />
       <div className="max-w-6xl mx-auto px-4 pb-20">
         <div className="text-center mb-16">
-          <h2 className=" text-8xl md:text-6xl font-serif tangerine-regular text-gold mb-4">
-            Ubicaciones
+          <h2 className=" text-4xl md:text-6xl font-serif old-standard-regular text-gold mb-4">
+            UBICACIONES
           </h2>
          
         </div>
@@ -29,8 +29,8 @@ const LocationSection = () => {
             </div>
             <CardContent className="p-6">
               <div className="space-y-3 mb-6 text-center">
-                <h4 className=" tangerine-bold text-4xl">Iglesia Sagrada Familia</h4>
-                <p className="text-muted-foreground text-lg playfair">
+                <h4 className=" raleway text-2xl">Iglesia Sagrada Familia</h4>
+                <p className="text-lg text-muted-foreground raleway">
                   Calle Río de la Plata & Del Cisne.<br />
                   Gaviotas, 82110, Mazatlán, Sin<br />
                 </p>
@@ -58,8 +58,8 @@ const LocationSection = () => {
             </div>
             <CardContent className="p-6 text-center">
               <div className="space-y-3 mb-6">
-                <h4 className="font-semibold tangerine-bold text-4xl">Cerritos Resort</h4>
-                <p className="text-muted-foreground text-lg playfair">
+                <h4 className="raleway text-2xl">Cerritos Resort</h4>
+                <p className="text-lg   text-muted-foreground raleway">
                   Camino a Cerritos<br />
                   Antes de llegar a Baraka
                 </p>

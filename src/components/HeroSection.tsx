@@ -33,15 +33,15 @@ const HeroSection = () => {
 
 
           <div className="">
-            <h1 className="text-6xl md:text-4xl parisienne font-light mb-2">
+            <h1 className="text-6xl md:text-4xl great-vibes-regular font-light mb-2">
               Kim
             </h1>
             <div className="flex items-center justify-center my-4">
               <div className="h-px bg-white/60 flex-1 max-w-20"></div>
-              <span className="mx-6 text-2xl parisienne">&</span>
+              <span className="mx-6 text-2xl great-vibes-regular">&</span>
               <div className="h-px bg-white/60 flex-1 max-w-20"></div>
             </div>
-            <h1 className="text-6xl md:text-4xl parisienne font-light">
+            <h1 className="text-6xl md:text-4xl great-vibes-regular font-light">
               Oliver
             </h1>
           </div>

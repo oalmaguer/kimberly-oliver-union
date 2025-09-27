@@ -34,23 +34,23 @@ const WelcomeSection = () => {
   }, []);
 
   return (
-    <section id="bienvenida" className="pt-20 pb-10 bg-warm-white relative overflow-hidden">
+    <section id="bienvenida" className="pt-20 pb-10  relative overflow-hidden">
       {/* Flower Background Image */}
-      <div className="absolute inset-0 opacity-40">
+      {/* <div className="absolute inset-0 opacity-40">
         <img
           src={flowersImage}
           alt="Flower background"
           className="w-full h-full object-cover filter  hue-rotate-90 opacity-20"
         />
-      </div>
+      </div> */}
 
       {/* Content */}
       <div className="relative max-w-4xl mx-auto px-4 text-center">
-        <h2 className="text-6xl md:text-8xl old-standard-regular text-gold mb-8">
+        <h2 className="text-4xl md:text-8xl old-standard-regular text-gold mb-8">
           HAPPILY EVER AFTER
         </h2>
 
-        <div className="max-w-3xl mx-auto space-y-6 text-lg text-foreground/80 playfair leading-relaxed">
+        <div className="max-w-3xl mx-auto space-y-6 text-lg text-foreground/80 raleway leading-relaxed">
           <p>
             Queridos familiares y amigos, es con gran alegría que los invitamos a celebrar
             el día más importante de nuestras vidas. Después de años de amor, risas y
@@ -58,22 +58,23 @@ const WelcomeSection = () => {
           </p>
 
           {/* Countdown Timer */}
-          <hr className='border border-yellow-600 ' />
+          {/* <hr className='border border-yellow-600 
+          [💕' /> */}
           <div className="text-center mt-8 ">
-            <p className="text-2xl font-serif text-muted-foreground old-standard-regular">Te esperamos para </p>
-            <p className="text-2xl font-serif text-muted-foreground old-standard-regular mb-8">celebrar nuestra boda</p>
+            <p className="text-2xl font-serif text-muted-foreground raleway">Te esperamos para </p>
+            <p className="text-2xl font-serif text-muted-foreground raleway mb-8">celebrar nuestra boda</p>
             {/* here goes the date 31/01/2026 */}
             <div className="flex justify-center md:flex-row flex items-center lg:gap-16 gap-8 mb-4">
               <div>
                 <hr className='border border-yellow-600 w-full mb-4'/>
-            <p className="text-xl font-serif text-muted-foreground old-standard-regular">SABADO</p>
+            <p className="text-xl font-serif text-muted-foreground raleway">SABADO</p>
             <hr className='border border-yellow-600 w-full mt-4'/>
               </div>
               
-            <p className="text-5xl font-serif  old-standard-regular">31</p>
+            <p className="text-5xl font-serif  raleway">31</p>
             <div> 
             <hr className='border border-yellow-600 w-full mb-4'/>
-            <p className="text-xl font-serif text-muted-foreground old-standard-regular">ENERO</p>
+            <p className="text-xl font-serif text-muted-foreground raleway">ENERO</p>
             <hr className='border border-yellow-600 w-full mt-4'/>
             </div>
             </div>

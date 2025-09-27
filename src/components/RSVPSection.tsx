@@ -98,7 +98,7 @@ const RSVPSection = () => {
 
   if (isSubmitted) {
     return (
-      <section id="rsvp" className="py-20 ">
+      <section id="rsvp" className=" ">
         <div className="max-w-2xl mx-auto px-4 text-center">
           <div className="bg-gold/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
             <Check className="w-10 h-10 text-gold" />
@@ -113,19 +113,19 @@ const RSVPSection = () => {
   }
 
   return (
-    <section id="rsvp" className="py-20 ">
+    <section id="rsvp" className="pb-10 ">
       <div className="max-w-2xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-8xl md:text-8xl font-serif text-gold mb-4 tangerine-regular">
-            Confirma tu Asistencia
+        <div className="text-center mb-4">
+          <h2 className="text-6xl md:text-8xl font-serif text-gold mb-4 old-standard-regular">
+            RSVP
           </h2>
-          <p className="text-lg text-muted-foreground font-sans">
-            Por favor confirma tu asistencia antes del 1 de marzo de 2025
+          <p className="text-lg text-muted-foreground raleway">
+            Por favor confirma tu asistencia antes del <strong>1 de Noviembre de 2025</strong>
           </p>
         </div>
 
-        <Card className="shadow-card bg-card border-0">
-          <CardContent className="p-8">
+        <Card className="shadow-card border-0">
+          <CardContent className="p-4">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="space-y-2">
@@ -222,7 +222,7 @@ const RSVPSection = () => {
 
               <Button
                 type="submit"
-                className="w-full bg-gold hover:bg-gold-dark text-white font-sans"
+                className="w-full bg-green-300 hover:bg-green-400 text-white font-sans"
                 size="lg"
                 disabled={isSubmitting}
               >
@@ -233,9 +233,9 @@ const RSVPSection = () => {
         </Card>
 
         <div className="mt-8 text-center">
-          <p className="text-sm text-muted-foreground font-sans">
+          <p className="text-sm text-muted-foreground font-sans raleway">
             ¿Tienes problemas para enviar el formulario?
-            <br />Contacta directamente: <strong>kimberly.oliver.boda@email.com</strong>
+            <br />Contacta directamente: <strong>+52 6692 77 61 29</strong>
           </p>
         </div>
       </div>
