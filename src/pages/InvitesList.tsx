@@ -41,7 +41,7 @@ const InvitesList = () => {
                             <th className="border border-gray-300 px-4 py-2">Email</th>
                             <th className="border border-gray-300 px-4 py-2">Phone</th>
                             <th className="border border-gray-300 px-4 py-2">Confirmation</th>
-                            <th className="border border-gray-300 px-4 py-2">Number of Guests</th>
+                            <th className="border border-gray-300 px-4 py-2">Numero de pases</th>
                             <th className="border border-gray-300 px-4 py-2">Alergies</th>
                             <th className="border border-gray-300 px-4 py-2">Message</th>
                         </tr>

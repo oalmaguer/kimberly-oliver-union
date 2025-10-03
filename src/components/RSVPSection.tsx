@@ -181,7 +181,7 @@ const RSVPSection = () => {
                 <div className="space-y-2">
                   <Label htmlFor="companions" className="font-sans text-foreground flex items-center">
                     <Users className="w-4 h-4 mr-1" />
-                    Número de acompañantes
+                    Número de pases
                   </Label>
                   <Input
                     id="companions"

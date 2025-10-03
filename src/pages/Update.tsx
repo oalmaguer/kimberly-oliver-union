@@ -62,7 +62,7 @@ const Update = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium">Number of guests</label>
+          <label className="block text-sm font-medium">Numero de pases</label>
           <input
             type="number"
             min={0}
