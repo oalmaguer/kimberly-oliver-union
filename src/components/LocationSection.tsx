@@ -17,7 +17,7 @@ const LocationSection = () => {
          
         </div>
 
-        <div className="flex md:flex-row flex-col gap-4">
+        <div className="flex md:flex-row flex-col gap-4 items-end">
           {/* Iglesia */}
           <Card className="  overflow-hidden w-[350px]  mx-auto">
             <div className=" flex justify-center">
@@ -38,7 +38,7 @@ const LocationSection = () => {
               </div>
               <Button
                 variant="outline"
-                className="w-full border-gold text-gold hover:bg-gold hover:text-white playfair"
+                className="w-full border-gold text-gold hover:bg-gold hover:text-white "
                 onClick={() => window.open('https://www.google.com/maps/place/Parroquia+De+La+Sagrada+Familia/@23.2462385,-106.4527355,17z/data=!3m1!4b1!4m6!3m5!1s0x1407af1682c8e89f:0x9b0c19a3e88700a3!8m2!3d23.2462385!4d-106.4501606!16s%2Fg%2F11rqx6jpn?entry=ttu&g_ep=EgoyMDI1MDkyMS4wIKXMDSoASAFQAw%3D%3D', '_blank')}
               >
                 <Navigation className="w-4 h-4 mr-2" />
@@ -67,7 +67,7 @@ const LocationSection = () => {
               </div>
               <Button
                 variant="outline"
-                className="w-full border-gold text-gold hover:bg-gold hover:text-white playfair"
+                className="w-full border-gold text-gold hover:bg-gold hover:text-white "
                 onClick={() => window.open('https://www.google.com/maps/place/Cerritos+Resort,+82112+Mazatl%C3%A1n,+Sin./@23.299361,-106.4859465,17z/data=!3m1!4b1!4m6!3m5!1s0x8698ab03dfd91e79:0x36176a1dff053418!8m2!3d23.2990776!4d-106.4836574!16s%2Fg%2F1tfzsb_p?entry=ttu&g_ep=EgoyMDI1MDkyMS4wIKXMDSoASAFQAw%3D%3D', '_blank')}
               >
                 <Navigation className="w-4 h-4 mr-2" />

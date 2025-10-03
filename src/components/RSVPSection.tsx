@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Check, Users, MessageCircle } from 'lucide-react';
+import { Popover, PopoverTrigger, PopoverContent } from '@/components/ui/popover';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -29,14 +30,19 @@ const RSVPSection = () => {
     dietaryRestrictions: '',
     message: ''
   });
+  const [allConfirmations, setAllConfirmations] = useState<any[]>([]);
+  const [nameSuggestions, setNameSuggestions] = useState<any[]>([]);
+  const [openPopover, setOpenPopover] = useState(false);
+  const nameInputRef = useRef<HTMLInputElement | null>(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [selectedUserId, setSelectedUserId] = useState<number | null>(null);
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!formData.name || !formData.email || !formData.attendance) {
+    if (!formData.name  || !formData.attendance) {
       toast({
         title: "Error",
         description: "Por favor completa todos los campos requeridos.",
@@ -48,17 +54,27 @@ const RSVPSection = () => {
     setIsSubmitting(true);
 
     try {
-      const { error } = await (supabase as any)
-        .from('confirmacion')
-        .insert({
+        let error: any = null;
+        const payload = {
           name: formData.name,
-          email: formData.email,
-          phone: formData.phone || null,
           confirmation: formData.attendance === 'yes',
-          number_guests: formData.companions || null,
+          number_guests: formData.companions ? Number(formData.companions) : null,
           alergies: formData.dietaryRestrictions || null,
-          message: formData.message || null
-        });
+          message: formData.message || null,
+        };
+
+        if (selectedUserId) {
+          const res = await (supabase as any)
+            .from('confirmacion')
+            .update(payload)
+            .eq('id', selectedUserId);
+          error = res.error;
+        } else {
+          const res = await (supabase as any)
+            .from('confirmacion')
+            .insert(payload);
+          error = res.error;
+        }
 
       if (error) {
         if (error.code === '23505') { // Unique constraint violation
@@ -90,10 +106,64 @@ const RSVPSection = () => {
   };
 
   const handleInputChange = (field: string, value: string) => {
+    if (!value.length) {
+      setSelectedUserId(null);
+    }
     setFormData(prev => ({
       ...prev,
       [field]: value
     }));
+  };
+
+  // Fetch all confirmations on mount and cache them
+  useEffect(() => {
+    let mounted = true;
+    const fetchAll = async () => {
+      try {
+        const { data, error } = await (supabase as any)
+          .from('confirmacion')
+          .select('id, name, email, phone, number_guests, confirmation');
+
+        if (error) {
+          console.error('Error fetching confirmations:', error);
+        } else if (mounted) {
+          setAllConfirmations(data || []);
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    fetchAll();
+    return () => { mounted = false };
+  }, []);
+
+  // Update suggestions when name input changes
+  useEffect(() => {
+    if (selectedUserId) {return;}
+    const q = formData.name.trim().toLowerCase();
+    if (!q && q.length < 2) {
+      setNameSuggestions([]);
+      setOpenPopover(false);
+      return;
+    }
+
+    if (q.length < 3) {return;}
+    const matches = allConfirmations.filter((c) => c.name && c.name.toLowerCase().includes(q) && c.confirmation === null);
+    setNameSuggestions(matches.slice(0, 8));
+    setOpenPopover(matches.length > 0);
+setTimeout(() => nameInputRef.current?.focus(), 0);
+  }, [formData.name, allConfirmations]);
+
+  const handleChooseSuggestion = (sugg: any) => {
+    setFormData(prev => ({
+      ...prev,
+      name: sugg.name,
+      companions: sugg.number_guests != null ? String(sugg.number_guests) : prev.companions,
+    }));
+    setOpenPopover(false);
+    setSelectedUserId(sugg.id);
+    nameInputRef.current?.focus();
   };
 
   if (isSubmitted) {
@@ -127,44 +197,48 @@ const RSVPSection = () => {
         <Card className="shadow-card border-0">
           <CardContent className="p-4">
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid  gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="name" className="font-sans text-foreground">Nombre Completo *</Label>
-                  <Input
-                    id="name"
-                    required
-                    value={formData.name}
-                    onChange={(e) => handleInputChange('name', e.target.value)}
-                    className="border-gold/30 focus:border-gold"
-                  />
+                  <Popover open={openPopover} onOpenChange={setOpenPopover}>
+                    <PopoverTrigger asChild>
+                      <div>
+                        <Input
+                          id="name"
+                          required
+                          ref={nameInputRef}
+                          value={formData.name}
+                          onChange={(e) => handleInputChange('name', e.target.value)}
+                          className="border-gold/30 focus:border-gold"
+                          autoComplete="off"
+                        />
+                      </div>
+                    </PopoverTrigger>
+
+                    {nameSuggestions.length > 0 && (
+                      <PopoverContent>
+                        <div className="space-y-1">
+                          {nameSuggestions.map((s) => (
+                            <button
+                              key={s.id}
+                              type="button"
+                              onClick={() => handleChooseSuggestion(s)}
+                              className="w-full text-left px-2 py-1 rounded hover:bg-gray-100"
+                            >
+                              {s.name} {s.email ? <span className="text-xs text-muted-foreground">— {s.email}</span> : null}
+                            </button>
+                          ))}
+                        </div>
+                      </PopoverContent>
+                    )}
+                  </Popover>
                 </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="email" className="font-sans text-foreground">Email *</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={(e) => handleInputChange('email', e.target.value)}
-                    className="border-gold/30 focus:border-gold"
-                  />
-                </div>
+               
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="phone" className="font-sans text-foreground">Teléfono</Label>
-                <Input
-                  id="phone"
-                  type="tel"
-                  required
-                  value={formData.phone}
-                  onChange={(e) => handleInputChange('phone', e.target.value)}
-                  className="border-gold/30 focus:border-gold"
-                />
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-4">
+          
+              <div className="grid md:grid-cols-2 gap-4 items-end">
                 <div className="space-y-2">
                   <Label className="font-sans text-foreground">¿Asistirás? *</Label>
                   <Select onValueChange={(value) => handleInputChange('attendance', value)}>
@@ -191,20 +265,12 @@ const RSVPSection = () => {
                     value={formData.companions}
                     onChange={(e) => handleInputChange('companions', e.target.value)}
                     className="border-gold/30 focus:border-gold"
+                    disabled={true}
                   />
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="dietary" className="font-sans text-foreground">Restricciones Alimentarias</Label>
-                <Input
-                  id="dietary"
-                  placeholder="Vegetariano, vegano, alergias, etc."
-                  value={formData.dietaryRestrictions}
-                  onChange={(e) => handleInputChange('dietaryRestrictions', e.target.value)}
-                  className="border-gold/30 focus:border-gold"
-                />
-              </div>
+            
 
               <div className="space-y-2">
                 <Label htmlFor="message" className="font-sans text-foreground flex items-center">
@@ -222,7 +288,7 @@ const RSVPSection = () => {
 
               <Button
                 type="submit"
-                className="w-full bg-green-300 hover:bg-green-400 text-white font-sans"
+                className="w-full bg-green-600 hover:bg-green-800 text-white font-sans"
                 size="lg"
                 disabled={isSubmitting}
               >

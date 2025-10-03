@@ -99,7 +99,7 @@ export function WeddingTimeline() {
                 {/* Content */}
                 <div className={`flex-1 ml-16 md:ml-0 ${index % 2 === 0 ? "md:pr-8" : "md:pl-8"}`}>
                   <Card className="p-6  ">
-                    <div className="flex items-start justify-between mb-4">
+                    <div className="flex items-start justify-center mb-4">
                       <div>
                         <div className="flex items-center gap-3 mb-2">
                           <span className="text-2xl" role="img" aria-label={event.type}>
