@@ -51,37 +51,16 @@ const DressCodeSection = () => {
         </div>
 
         {/* Color Palette Guide */}
-  
+
 
         <div className="bg-cream rounded-lg p-8">
-          {/* <div className="grid md:grid-cols-2 gap-8">
-            <div>
-              <h4 className="text-2xl font-serif text-gold mb-4">Para Ellas</h4>
-              <ul className="space-y-2 font-sans text-muted-foreground">
-                <li>• Vestidos largos o midi elegantes</li>
-                <li>• Colores suaves: nude, champagne, blush, sage</li>
-                <li>• Tacones cómodos (ceremonia en jardín)</li>
-                <li>• Accesorios dorados o en tonos tierra</li>
-                <li>• Bolero o chal para la iglesia</li>
-              </ul>
-            </div>
-
-          <div>
-            <h4 className="text-2xl font-serif text-gold mb-4">Para Ellos</h4>
-            <ul className="space-y-2 font-sans text-muted-foreground">
-              <li>• Traje completo en tonos oscuros</li>
-              <li>• Camisa blanca o en tonos claros</li>
-              <li>• Corbata o moño en colores complementarios</li>
-              <li>• Zapatos de vestir</li>
-              <li>• Saco obligatorio para la ceremonia</li>
-            </ul>
-          </div>
-        </div> */}
-
           <div className="mt-8 p-4 bg-gold/10 rounded-lg">
             <p className="text-center text-sm font-sans text-gold-dark">
               <strong>Recuerda:</strong> La ceremonia será al aire libre. Te sugerimos considerar
               el clima y usar calzado apropiado para caminar en jardín.
+            </p>
+            <p className="text-center mt-4 text-sm font-sans ">
+              <strong>No Niños:</strong> La ceremonia será un evento para adultos.
             </p>
           </div>
         </div>

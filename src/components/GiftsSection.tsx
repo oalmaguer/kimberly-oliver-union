@@ -46,6 +46,7 @@ const GiftsSection = () => {
                 variant="outline"
                 size="sm"
                 className="border-gold text-gold hover:bg-gold hover:text-white"
+                onClick={() => window.open('https://mesaderegalos.liverpool.com.mx/milistaderegalos/51806107', '_blank')}
               >
                 Ver Lista
               </Button>
@@ -66,9 +67,9 @@ const GiftsSection = () => {
                 <p className='raleway '>Deposito a cuenta Santander</p>
                 <p className='raleway'>Tarjeta: <span className="cursor-pointer text-gold hover:text-gold-dark underline " onClick={() => copyToClipboard('5579 1003 9392 9011')}>5579 1003 9392 9011</span></p>
                 <p className='raleway'>Nombre: Oliver Almaguer Tostado</p>
-             
+
               </div>
-        
+
             </CardContent>
           </Card>
 
@@ -93,14 +94,14 @@ const GiftsSection = () => {
                     4152 3144 0672 9254
                   </span>
                 </p>
-               
+
                 <p className="raleway">Nombre: Kimberly Covarrubias</p>
               </div>
             </CardContent>
           </Card>
         </div>
 
-   
+
       </div>
     </section>
   );

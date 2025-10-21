@@ -42,7 +42,7 @@ const RSVPSection = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!formData.name  || !formData.attendance) {
+    if (!formData.name || !formData.attendance) {
       toast({
         title: "Error",
         description: "Por favor completa todos los campos requeridos.",
@@ -54,27 +54,27 @@ const RSVPSection = () => {
     setIsSubmitting(true);
 
     try {
-        let error: any = null;
-        const payload = {
-          name: formData.name,
-          confirmation: formData.attendance === 'yes',
-          number_guests: formData.companions ? Number(formData.companions) : null,
-          alergies: formData.dietaryRestrictions || null,
-          message: formData.message || null,
-        };
+      let error: any = null;
+      const payload = {
+        name: formData.name,
+        confirmation: formData.attendance === 'yes',
+        number_guests: formData.companions ? Number(formData.companions) : null,
+        alergies: formData.dietaryRestrictions || null,
+        message: formData.message || null,
+      };
 
-        if (selectedUserId) {
-          const res = await (supabase as any)
-            .from('confirmacion')
-            .update(payload)
-            .eq('id', selectedUserId);
-          error = res.error;
-        } else {
-          const res = await (supabase as any)
-            .from('confirmacion')
-            .insert(payload);
-          error = res.error;
-        }
+      if (selectedUserId) {
+        const res = await (supabase as any)
+          .from('confirmacion')
+          .update(payload)
+          .eq('id', selectedUserId);
+        error = res.error;
+      } else {
+        const res = await (supabase as any)
+          .from('confirmacion')
+          .insert(payload);
+        error = res.error;
+      }
 
       if (error) {
         if (error.code === '23505') { // Unique constraint violation
@@ -90,7 +90,7 @@ const RSVPSection = () => {
         setIsSubmitted(true);
         toast({
           title: "¡Confirmación recibida!",
-          description: "Gracias por confirmar tu asistencia. Te enviaremos más detalles por email.",
+          description: "Gracias por confirmar tu asistencia!",
         });
       }
     } catch (error) {
@@ -140,7 +140,7 @@ const RSVPSection = () => {
 
   // Update suggestions when name input changes
   useEffect(() => {
-    if (selectedUserId) {return;}
+    if (selectedUserId) { return; }
     const q = formData.name.trim().toLowerCase();
     if (!q && q.length < 2) {
       setNameSuggestions([]);
@@ -148,11 +148,11 @@ const RSVPSection = () => {
       return;
     }
 
-    if (q.length < 3) {return;}
+    if (q.length < 3) { return; }
     const matches = allConfirmations.filter((c) => c.name && c.name.toLowerCase().includes(q) && c.confirmation === null);
     setNameSuggestions(matches.slice(0, 8));
     setOpenPopover(matches.length > 0);
-setTimeout(() => nameInputRef.current?.focus(), 0);
+    setTimeout(() => nameInputRef.current?.focus(), 0);
   }, [formData.name, allConfirmations]);
 
   const handleChooseSuggestion = (sugg: any) => {
@@ -190,7 +190,7 @@ setTimeout(() => nameInputRef.current?.focus(), 0);
             RSVP
           </h2>
           <p className="text-lg text-muted-foreground raleway">
-            Por favor confirma tu asistencia antes del <strong>1 de Noviembre de 2025</strong>
+            Por favor confirma tu asistencia antes del <strong>1 de Diciembre de 2025</strong>
           </p>
         </div>
 
@@ -234,10 +234,10 @@ setTimeout(() => nameInputRef.current?.focus(), 0);
                   </Popover>
                 </div>
 
-               
+
               </div>
 
-          
+
               <div className="grid md:grid-cols-2 gap-4 items-end">
                 <div className="space-y-2">
                   <Label className="font-sans text-foreground">¿Asistirás? *</Label>
@@ -270,7 +270,7 @@ setTimeout(() => nameInputRef.current?.focus(), 0);
                 </div>
               </div>
 
-            
+
 
               <div className="space-y-2">
                 <Label htmlFor="message" className="font-sans text-foreground flex items-center">
