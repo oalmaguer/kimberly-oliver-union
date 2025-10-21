@@ -25,7 +25,7 @@ export function WeddingTimeline() {
 
         <div className="space-y-8">
           {timelineEvents.map((event, index) => (
-            <div key={index} className="flex items-center gap-4 ml-10">
+            <div key={index} className="flex items-center md:justify-center gap-4 ml-10">
               <img src={event.icon} alt={event.title} className="w-20" />
               <hr className="flex w-[30px] border-t border-gold" />
               <div>
