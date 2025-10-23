@@ -108,6 +108,17 @@ const RSVPSection = () => {
   const handleInputChange = (field: string, value: string) => {
     if (!value.length) {
       setSelectedUserId(null);
+      //reset form data
+      setFormData(prev => ({
+        ...prev,
+        name: '',
+        email: '',
+        phone: '',
+        attendance: '',
+        companions: '',
+        dietaryRestrictions: '',
+        message: ''
+      }));
     }
     setFormData(prev => ({
       ...prev,
@@ -124,10 +135,11 @@ const RSVPSection = () => {
           .from('confirmacion')
           .select('id, name, email, phone, number_guests, confirmation');
 
+        const filteredData = data?.filter((item: ConfirmationData) => item.confirmation === null);
         if (error) {
           console.error('Error fetching confirmations:', error);
         } else if (mounted) {
-          setAllConfirmations(data || []);
+          setAllConfirmations(filteredData || []);
         }
       } catch (err) {
         console.error(err);
@@ -156,6 +168,7 @@ const RSVPSection = () => {
   }, [formData.name, allConfirmations]);
 
   const handleChooseSuggestion = (sugg: any) => {
+
     setFormData(prev => ({
       ...prev,
       name: sugg.name,
@@ -290,7 +303,7 @@ const RSVPSection = () => {
                 type="submit"
                 className="w-full bg-green-600 hover:bg-green-800 text-white font-sans"
                 size="lg"
-                disabled={isSubmitting}
+                disabled={isSubmitting || !selectedUserId || !formData.attendance || !formData.companions}
               >
                 {isSubmitting ? 'Enviando...' : 'Confirmar Asistencia'}
               </Button>
