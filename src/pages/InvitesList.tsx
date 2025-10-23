@@ -38,11 +38,8 @@ const InvitesList = () => {
                             <th className="border border-gray-300 px-4 py-2">ID</th>
                             <th className="border border-gray-300 px-4 py-2">Created At</th>
                             <th className="border border-gray-300 px-4 py-2">Name</th>
-                            <th className="border border-gray-300 px-4 py-2">Email</th>
-                            <th className="border border-gray-300 px-4 py-2">Phone</th>
                             <th className="border border-gray-300 px-4 py-2">Confirmation</th>
                             <th className="border border-gray-300 px-4 py-2">Numero de pases</th>
-                            <th className="border border-gray-300 px-4 py-2">Alergies</th>
                             <th className="border border-gray-300 px-4 py-2">Message</th>
                         </tr>
                     </thead>
@@ -52,11 +49,8 @@ const InvitesList = () => {
                                 <td className="border border-gray-300 px-4 py-2">{invite.id}</td>
                                 <td className="border border-gray-300 px-4 py-2">{invite.created_at}</td>
                                 <td className="border border-gray-300 px-4 py-2">{invite.name}</td>
-                                <td className="border border-gray-300 px-4 py-2">{invite.email}</td>
-                                <td className="border border-gray-300 px-4 py-2">{invite.phone}</td>
                                 <td className="border border-gray-300 px-4 py-2">{invite.confirmation ? 'Yes' : 'No'}</td>
                                 <td className="border border-gray-300 px-4 py-2">{invite.number_guests}</td>
-                                <td className="border border-gray-300 px-4 py-2">{invite.alergies}</td>
                                 <td className="border border-gray-300 px-4 py-2">{invite.message}</td>
                             </tr>
                         ))}

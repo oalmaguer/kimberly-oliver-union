@@ -59,7 +59,6 @@ const RSVPSection = () => {
         name: formData.name,
         confirmation: formData.attendance === 'yes',
         number_guests: formData.companions ? Number(formData.companions) : null,
-        alergies: formData.dietaryRestrictions || null,
         message: formData.message || null,
       };
 
@@ -133,7 +132,7 @@ const RSVPSection = () => {
       try {
         const { data, error } = await (supabase as any)
           .from('confirmacion')
-          .select('id, name, email, phone, number_guests, confirmation');
+          .select('id, name, number_guests, confirmation');
 
         const filteredData = data?.filter((item: ConfirmationData) => item.confirmation === null);
         if (error) {
