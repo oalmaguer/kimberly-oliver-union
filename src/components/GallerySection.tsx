@@ -1,34 +1,34 @@
-import { useState } from 'react';
-import { X, ChevronLeft, ChevronRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { supabase } from '@/integrations/supabase/client';
-import GuestGallery from '@/pages/GuestGallery';
-import image1 from '@/assets/olikim.jpeg';
-import image2 from '@/assets/olikim2.jpeg';
-import image3 from '@/assets/olikim3.jpeg';
-import image4 from '@/assets/olikim4.jpeg';
-import image5 from '@/assets/olikim5.jpeg';
-import image6 from '@/assets/olikim6.jpeg';
-import image7 from '@/assets/olikim7.jpeg';
-import image8 from '@/assets/olikim8.jpeg';
+import { useState } from "react";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { supabase } from "@/integrations/supabase/client";
+import GuestGallery from "@/pages/GuestGallery";
+import image1 from "@/assets/olikim.jpeg";
+import image2 from "@/assets/olikim2.jpeg";
+import image3 from "@/assets/olikim3.jpeg";
+import image4 from "@/assets/olikim4.jpeg";
+import image5 from "@/assets/olikim5.jpeg";
+import image6 from "@/assets/olikim6.jpeg";
+import image7 from "@/assets/olikim7.jpeg";
+import image8 from "@/assets/olikim8.jpeg";
 
 const GallerySection = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [name, setName] = useState('');
+  const [name, setName] = useState("");
   const [file, setFile] = useState(null);
   const [showGuestGallery, setShowGuestGallery] = useState(false);
 
   // Placeholder images - en una implementación real, estas serían las URLs de las fotos reales
   const images = [
-    { id: 1, src: image1, alt: 'Momento especial 1' },
-    { id: 2, src: image2, alt: 'Momento especial 2' },
-    { id: 3, src: image3, alt: 'Momento especial 3' },
-    { id: 4, src: image4, alt: 'Momento especial 4' },
-    { id: 5, src: image5, alt: 'Momento especial 5' },
-    { id: 6, src: image6, alt: 'Momento especial 6' },
-    { id: 7, src: image7, alt: 'Momento especial 7' },
-    { id: 8, src: image8, alt: 'Momento especial 8' },
+    { id: 1, src: image1, alt: "Momento especial 1" },
+    { id: 2, src: image2, alt: "Momento especial 2" },
+    { id: 3, src: image3, alt: "Momento especial 3" },
+    { id: 4, src: image4, alt: "Momento especial 4" },
+    { id: 5, src: image5, alt: "Momento especial 5" },
+    { id: 6, src: image6, alt: "Momento especial 6" },
+    { id: 7, src: image7, alt: "Momento especial 7" },
+    { id: 8, src: image8, alt: "Momento especial 8" },
   ];
 
   const openLightbox = (index: number) => {
@@ -39,31 +39,37 @@ const GallerySection = () => {
     setSelectedImage(null);
   };
 
-  const navigateImage = (direction: 'prev' | 'next') => {
+  const navigateImage = (direction: "prev" | "next") => {
     if (selectedImage === null) return;
 
-    if (direction === 'prev') {
-      setSelectedImage(selectedImage === 0 ? images.length - 1 : selectedImage - 1);
+    if (direction === "prev") {
+      setSelectedImage(
+        selectedImage === 0 ? images.length - 1 : selectedImage - 1
+      );
     } else {
-      setSelectedImage(selectedImage === images.length - 1 ? 0 : selectedImage + 1);
+      setSelectedImage(
+        selectedImage === images.length - 1 ? 0 : selectedImage + 1
+      );
     }
   };
 
   const handleUpload = async () => {
     if (!file || !name) {
-      alert('Please provide a name and select a file.');
+      alert("Please provide a name and select a file.");
       return;
     }
 
-    const { data, error } = await supabase.storage.from('guest_gallery').upload(`${name}-${file.name}`, file);
+    const { data, error } = await supabase.storage
+      .from("guest_gallery")
+      .upload(`${name}-${file.name}`, file);
 
     if (error) {
-      console.error('Error uploading file:', error);
-      alert('Failed to upload the photo.');
+      console.error("Error uploading file:", error);
+      alert("Failed to upload the photo.");
     } else {
-      alert('Photo uploaded successfully!');
+      alert("Photo uploaded successfully!");
       setIsModalOpen(false);
-      setName('');
+      setName("");
       setFile(null);
     }
   };
@@ -76,10 +82,9 @@ const GallerySection = () => {
     <section id="galeria" className="py-10 ">
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-8xl font-serif text-gold mb-4 old-standard-regular">
+          <h2 className="text-4xl md:text-6xl font-serif text-gold mb-4 old-standard-regular">
             NUESTRA HISTORIA EN IMAGENES
           </h2>
-        
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -138,7 +143,7 @@ const GallerySection = () => {
             variant="ghost"
             size="icon"
             className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:bg-white/20"
-            onClick={() => navigateImage('prev')}
+            onClick={() => navigateImage("prev")}
           >
             <ChevronLeft className="h-8 w-8" />
           </Button>
@@ -147,7 +152,7 @@ const GallerySection = () => {
             variant="ghost"
             size="icon"
             className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:bg-white/20"
-            onClick={() => navigateImage('next')}
+            onClick={() => navigateImage("next")}
           >
             <ChevronRight className="h-8 w-8" />
           </Button>

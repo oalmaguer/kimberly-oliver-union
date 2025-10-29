@@ -1,14 +1,24 @@
-import { useEffect, useState, useRef } from 'react';
-import { Check, Users, MessageCircle } from 'lucide-react';
-import { Popover, PopoverTrigger, PopoverContent } from '@/components/ui/popover';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Card, CardContent } from '@/components/ui/card';
-import { useToast } from '@/hooks/use-toast';
-import { supabase } from '@/integrations/supabase/client';
+import { useEffect, useState, useRef } from "react";
+import { Check, Users, MessageCircle } from "lucide-react";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+} from "@/components/ui/popover";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Card, CardContent } from "@/components/ui/card";
+import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 type ConfirmationData = {
   name: string;
@@ -22,13 +32,13 @@ type ConfirmationData = {
 
 const RSVPSection = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    attendance: '',
-    companions: '',
-    dietaryRestrictions: '',
-    message: ''
+    name: "",
+    email: "",
+    phone: "",
+    attendance: "",
+    companions: "",
+    dietaryRestrictions: "",
+    message: "",
   });
   const [allConfirmations, setAllConfirmations] = useState<any[]>([]);
   const [nameSuggestions, setNameSuggestions] = useState<any[]>([]);
@@ -46,7 +56,7 @@ const RSVPSection = () => {
       toast({
         title: "Error",
         description: "Por favor completa todos los campos requeridos.",
-        variant: "destructive"
+        variant: "destructive",
       });
       return;
     }
@@ -57,30 +67,31 @@ const RSVPSection = () => {
       let error: any = null;
       const payload = {
         name: formData.name,
-        confirmation: formData.attendance === 'yes',
+        confirmation: formData.attendance === "yes",
         number_guests: formData.companions ? Number(formData.companions) : null,
         message: formData.message || null,
       };
 
       if (selectedUserId) {
         const res = await (supabase as any)
-          .from('confirmacion')
+          .from("confirmacion")
           .update(payload)
-          .eq('id', selectedUserId);
+          .eq("id", selectedUserId);
         error = res.error;
       } else {
         const res = await (supabase as any)
-          .from('confirmacion')
+          .from("confirmacion")
           .insert(payload);
         error = res.error;
       }
 
       if (error) {
-        if (error.code === '23505') { // Unique constraint violation
+        if (error.code === "23505") {
+          // Unique constraint violation
           toast({
             title: "Error",
             description: "Este correo ya ha sido registrado.",
-            variant: "destructive"
+            variant: "destructive",
           });
         } else {
           throw error;
@@ -93,11 +104,12 @@ const RSVPSection = () => {
         });
       }
     } catch (error) {
-      console.error('Error saving RSVP:', error);
+      console.error("Error saving RSVP:", error);
       toast({
         title: "Error",
-        description: "Hubo un problema al guardar tu confirmación. Inténtalo de nuevo.",
-        variant: "destructive"
+        description:
+          "Hubo un problema al guardar tu confirmación. Inténtalo de nuevo.",
+        variant: "destructive",
       });
     } finally {
       setIsSubmitting(false);
@@ -108,20 +120,20 @@ const RSVPSection = () => {
     if (!value.length) {
       setSelectedUserId(null);
       //reset form data
-      setFormData(prev => ({
+      setFormData((prev) => ({
         ...prev,
-        name: '',
-        email: '',
-        phone: '',
-        attendance: '',
-        companions: '',
-        dietaryRestrictions: '',
-        message: ''
+        name: "",
+        email: "",
+        phone: "",
+        attendance: "",
+        companions: "",
+        dietaryRestrictions: "",
+        message: "",
       }));
     }
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [field]: value
+      [field]: value,
     }));
   };
 
@@ -131,12 +143,14 @@ const RSVPSection = () => {
     const fetchAll = async () => {
       try {
         const { data, error } = await (supabase as any)
-          .from('confirmacion')
-          .select('id, name, number_guests, confirmation');
+          .from("confirmacion")
+          .select("id, name, number_guests, confirmation");
 
-        const filteredData = data?.filter((item: ConfirmationData) => item.confirmation === null);
+        const filteredData = data?.filter(
+          (item: ConfirmationData) => item.confirmation === null
+        );
         if (error) {
-          console.error('Error fetching confirmations:', error);
+          console.error("Error fetching confirmations:", error);
         } else if (mounted) {
           setAllConfirmations(filteredData || []);
         }
@@ -146,12 +160,16 @@ const RSVPSection = () => {
     };
 
     fetchAll();
-    return () => { mounted = false };
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   // Update suggestions when name input changes
   useEffect(() => {
-    if (selectedUserId) { return; }
+    if (selectedUserId) {
+      return;
+    }
     const q = formData.name.trim().toLowerCase();
     if (!q && q.length < 2) {
       setNameSuggestions([]);
@@ -159,19 +177,26 @@ const RSVPSection = () => {
       return;
     }
 
-    if (q.length < 3) { return; }
-    const matches = allConfirmations.filter((c) => c.name && c.name.toLowerCase().includes(q) && c.confirmation === null);
+    if (q.length < 3) {
+      return;
+    }
+    const matches = allConfirmations.filter(
+      (c) =>
+        c.name && c.name.toLowerCase().includes(q) && c.confirmation === null
+    );
     setNameSuggestions(matches.slice(0, 8));
     setOpenPopover(matches.length > 0);
     setTimeout(() => nameInputRef.current?.focus(), 0);
   }, [formData.name, allConfirmations]);
 
   const handleChooseSuggestion = (sugg: any) => {
-
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       name: sugg.name,
-      companions: sugg.number_guests != null ? String(sugg.number_guests) : prev.companions,
+      companions:
+        sugg.number_guests != null
+          ? String(sugg.number_guests)
+          : prev.companions,
     }));
     setOpenPopover(false);
     setSelectedUserId(sugg.id);
@@ -187,7 +212,8 @@ const RSVPSection = () => {
           </div>
           <h2 className="text-3xl font-serif text-gold mb-4">¡Gracias!</h2>
           <p className="text-lg text-muted-foreground font-sans">
-            Hemos recibido tu confirmación. Te contactaremos pronto con más detalles sobre la celebración.
+            Hemos recibido tu confirmación. Te contactaremos pronto con más
+            detalles sobre la celebración.
           </p>
         </div>
       </section>
@@ -198,11 +224,12 @@ const RSVPSection = () => {
     <section id="rsvp" className="pb-10 ">
       <div className="max-w-2xl mx-auto px-4">
         <div className="text-center mb-4">
-          <h2 className="text-6xl md:text-8xl font-serif text-gold mb-4 old-standard-regular">
+          <h2 className="text-6xl md:text-6xl font-serif text-gold mb-4 old-standard-regular">
             RSVP
           </h2>
           <p className="text-lg text-muted-foreground raleway">
-            Por favor confirma tu asistencia antes del <strong>1 de Diciembre de 2025</strong>
+            Por favor confirma tu asistencia antes del{" "}
+            <strong>1 de Diciembre de 2025</strong>
           </p>
         </div>
 
@@ -211,7 +238,9 @@ const RSVPSection = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid  gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="name" className="font-sans text-foreground">Nombre Completo *</Label>
+                  <Label htmlFor="name" className="font-sans text-foreground">
+                    Nombre Completo *
+                  </Label>
                   <Popover open={openPopover} onOpenChange={setOpenPopover}>
                     <PopoverTrigger asChild>
                       <div>
@@ -220,7 +249,9 @@ const RSVPSection = () => {
                           required
                           ref={nameInputRef}
                           value={formData.name}
-                          onChange={(e) => handleInputChange('name', e.target.value)}
+                          onChange={(e) =>
+                            handleInputChange("name", e.target.value)
+                          }
                           className="border-gold/30 focus:border-gold"
                           autoComplete="off"
                         />
@@ -237,7 +268,12 @@ const RSVPSection = () => {
                               onClick={() => handleChooseSuggestion(s)}
                               className="w-full text-left px-2 py-1 rounded hover:bg-gray-100"
                             >
-                              {s.name} {s.email ? <span className="text-xs text-muted-foreground">— {s.email}</span> : null}
+                              {s.name}{" "}
+                              {s.email ? (
+                                <span className="text-xs text-muted-foreground">
+                                  — {s.email}
+                                </span>
+                              ) : null}
                             </button>
                           ))}
                         </div>
@@ -245,27 +281,37 @@ const RSVPSection = () => {
                     )}
                   </Popover>
                 </div>
-
-
               </div>
-
 
               <div className="grid md:grid-cols-2 gap-4 items-end">
                 <div className="space-y-2">
-                  <Label className="font-sans text-foreground">¿Asistirás? *</Label>
-                  <Select onValueChange={(value) => handleInputChange('attendance', value)}>
+                  <Label className="font-sans text-foreground">
+                    ¿Asistirás? *
+                  </Label>
+                  <Select
+                    onValueChange={(value) =>
+                      handleInputChange("attendance", value)
+                    }
+                  >
                     <SelectTrigger className="border-gold/30 focus:border-gold">
                       <SelectValue placeholder="Selecciona una opción" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="yes">Sí, asistiré con mucho gusto</SelectItem>
-                      <SelectItem value="no">Lo siento, no podré asistir</SelectItem>
+                      <SelectItem value="yes">
+                        Sí, asistiré con mucho gusto
+                      </SelectItem>
+                      <SelectItem value="no">
+                        Lo siento, no podré asistir
+                      </SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="companions" className="font-sans text-foreground flex items-center">
+                  <Label
+                    htmlFor="companions"
+                    className="font-sans text-foreground flex items-center"
+                  >
                     <Users className="w-4 h-4 mr-1" />
                     Número de pases
                   </Label>
@@ -275,17 +321,20 @@ const RSVPSection = () => {
                     min="0"
                     max="50"
                     value={formData.companions}
-                    onChange={(e) => handleInputChange('companions', e.target.value)}
+                    onChange={(e) =>
+                      handleInputChange("companions", e.target.value)
+                    }
                     className="border-gold/30 focus:border-gold"
                     disabled={true}
                   />
                 </div>
               </div>
 
-
-
               <div className="space-y-2">
-                <Label htmlFor="message" className="font-sans text-foreground flex items-center">
+                <Label
+                  htmlFor="message"
+                  className="font-sans text-foreground flex items-center"
+                >
                   <MessageCircle className="w-4 h-4 mr-1" />
                   Mensaje para los novios
                 </Label>
@@ -293,7 +342,7 @@ const RSVPSection = () => {
                   id="message"
                   placeholder="Déjanos un mensaje especial..."
                   value={formData.message}
-                  onChange={(e) => handleInputChange('message', e.target.value)}
+                  onChange={(e) => handleInputChange("message", e.target.value)}
                   className="border-gold/30 focus:border-gold min-h-[100px]"
                 />
               </div>
@@ -302,9 +351,14 @@ const RSVPSection = () => {
                 type="submit"
                 className="w-full bg-green-600 hover:bg-green-800 text-white font-sans"
                 size="lg"
-                disabled={isSubmitting || !selectedUserId || !formData.attendance || !formData.companions}
+                disabled={
+                  isSubmitting ||
+                  !selectedUserId ||
+                  !formData.attendance ||
+                  !formData.companions
+                }
               >
-                {isSubmitting ? 'Enviando...' : 'Confirmar Asistencia'}
+                {isSubmitting ? "Enviando..." : "Confirmar Asistencia"}
               </Button>
             </form>
           </CardContent>
@@ -313,7 +367,8 @@ const RSVPSection = () => {
         <div className="mt-8 text-center">
           <p className="text-sm text-muted-foreground font-sans raleway">
             ¿Tienes problemas para enviar el formulario?
-            <br />Contacta directamente: <strong>+52 6692 77 61 29</strong>
+            <br />
+            Contacta directamente: <strong>+52 6692 77 61 29</strong>
           </p>
         </div>
       </div>

@@ -1,5 +1,3 @@
-import image1 from '@/assets/olikim3.jpeg';
-import flowersImage from '@/assets/flowers.png';
 import { useEffect, useState } from "react";
 
 const WelcomeSection = () => {
@@ -46,53 +44,70 @@ const WelcomeSection = () => {
 
       {/* Content */}
       <div className="relative max-w-4xl mx-auto px-4 text-center">
-        <h2 className="text-4xl md:text-8xl old-standard-regular text-gold mb-8">
+        <h2 className="text-4xl md:text-6xl old-standard-regular text-gold mb-8">
           HAPPILY EVER AFTER
         </h2>
 
         <div className="max-w-3xl mx-auto space-y-6 text-lg text-foreground/80 raleway leading-relaxed">
           <p>
-            Queridos familiares y amigos, es con gran alegría que los invitamos a celebrar
-            el día más importante de nuestras vidas. Después de años de amor, risas y
-            complicidad, hemos decidido unir nuestros corazones para siempre.
+            Queridos familiares y amigos, es con gran alegría que los invitamos
+            a celebrar el día más importante de nuestras vidas. Después de años
+            de amor, risas y complicidad, hemos decidido unir nuestros corazones
+            para siempre.
           </p>
 
           {/* Countdown Timer */}
           {/* <hr className='border border-yellow-600 
           [💕' /> */}
           <div className="text-center mt-8 ">
-            <p className="text-2xl font-serif text-muted-foreground raleway">Te esperamos para </p>
-            <p className="text-2xl font-serif text-muted-foreground raleway mb-8">celebrar nuestra boda</p>
+            <p className="text-2xl font-serif text-muted-foreground raleway">
+              Te esperamos para{" "}
+            </p>
+            <p className="text-2xl font-serif text-muted-foreground raleway mb-8">
+              celebrar nuestra boda
+            </p>
             {/* here goes the date 31/01/2026 */}
             <div className="flex justify-center md:flex-row flex items-center lg:gap-16 gap-8 mb-4">
               <div>
-                <hr className='border border-yellow-600 w-full mb-4'/>
-            <p className="text-xl font-serif text-muted-foreground raleway">SABADO</p>
-            <hr className='border border-yellow-600 w-full mt-4'/>
+                <hr className="border border-yellow-600 w-full mb-4" />
+                <p className="text-xl font-serif text-muted-foreground raleway">
+                  SABADO
+                </p>
+                <hr className="border border-yellow-600 w-full mt-4" />
               </div>
-              
-            <p className="text-5xl font-serif  raleway">31</p>
-            <div> 
-            <hr className='border border-yellow-600 w-full mb-4'/>
-            <p className="text-xl font-serif text-muted-foreground raleway">ENERO</p>
-            <hr className='border border-yellow-600 w-full mt-4'/>
-            </div>
+
+              <p className="text-5xl font-serif  raleway">31</p>
+              <div>
+                <hr className="border border-yellow-600 w-full mb-4" />
+                <p className="text-xl font-serif text-muted-foreground raleway">
+                  ENERO
+                </p>
+                <hr className="border border-yellow-600 w-full mt-4" />
+              </div>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 justify-items-center gap-6 md:gap-8 tangerine-regular">
               <div className="text-center tangerine-regular">
-                <p className="text-6xl md:text-8xl font-bold text-gold">{timeLeft.days}</p>
+                <p className="text-6xl md:text-8xl font-bold text-gold">
+                  {timeLeft.days}
+                </p>
                 <p className="text-base md:text-2xl playfair">DAYS</p>
               </div>
               <div className="text-center tangerine-regular">
-                <p className="text-6xl md:text-8xl font-bold text-gold">{timeLeft.hours}</p>
+                <p className="text-6xl md:text-8xl font-bold text-gold">
+                  {timeLeft.hours}
+                </p>
                 <p className="text-base md:text-2xl playfair">HOURS</p>
               </div>
               <div className="text-center tangerine-regular">
-                <p className="text-6xl md:text-8xl font-bold text-gold">{timeLeft.minutes}</p>
+                <p className="text-6xl md:text-8xl font-bold text-gold">
+                  {timeLeft.minutes}
+                </p>
                 <p className="text-base md:text-2xl playfair">MINUTES</p>
               </div>
               <div className="text-center tangerine-regular">
-                <p className="text-6xl md:text-8xl font-bold text-gold">{timeLeft.seconds}</p>
+                <p className="text-6xl md:text-8xl font-bold text-gold">
+                  {timeLeft.seconds}
+                </p>
                 <p className="text-base md:text-2xl playfair">SECONDS</p>
               </div>
             </div>
@@ -101,9 +116,12 @@ const WelcomeSection = () => {
           <div className="">
             <div className="w-20 h-px bg-gold mx-auto mb-6"></div>
             <p className="text-gold font-serif text-xl italic">
-              "El amor no consiste en mirarse el uno al otro, sino en mirar juntos en la misma dirección."
+              "El amor no consiste en mirarse el uno al otro, sino en mirar
+              juntos en la misma dirección."
             </p>
-            <p className="text-sm text-muted-foreground mt-2">- Antoine de Saint-Exupéry</p>
+            <p className="text-sm text-muted-foreground mt-2">
+              - Antoine de Saint-Exupéry
+            </p>
           </div>
         </div>
       </div>
