@@ -35,7 +35,7 @@ export function WeddingTimeline() {
               key={index}
               className="flex items-center gap-4 ml-10 w-[350px] "
             >
-              <img src={event.icon} alt={event.title} className="w-20" />
+              <img src={event.icon} alt={event.title} className="w-32" />
               <hr className="flex w-[30px] border-t border-gold" />
               <div>
                 <p className="text-md font-serif text-gold">{event.time}</p>

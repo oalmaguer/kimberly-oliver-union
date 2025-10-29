@@ -1,20 +1,20 @@
-import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { HashLink } from 'react-router-hash-link';
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { HashLink } from "react-router-hash-link";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navigationItems = [
-    { name: 'Inicio', href: '#inicio' },
-    { name: 'Bienvenida', href: '#bienvenida' },
-    { name: 'Ubicación', href: '#ubicacion' },
-    { name: 'Itinerario', href: '#itinerario' },
-    { name: 'Vestimenta', href: '#vestimenta' },
-    { name: 'Regalos', href: '#regalos' },
-    { name: 'RSVP', href: '#rsvp' },
-    { name: 'Galería', href: '#galeria' },
+    { name: "Inicio", href: "#inicio" },
+    { name: "Bienvenida", href: "#bienvenida" },
+    { name: "Ubicación", href: "#ubicacion" },
+    { name: "Itinerario", href: "#itinerario" },
+    { name: "Vestimenta", href: "#vestimenta" },
+    { name: "Regalos", href: "#regalos" },
+    { name: "RSVP", href: "#rsvp" },
+    { name: "Galería", href: "#galeria" },
   ];
 
   return (
@@ -22,7 +22,9 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <div className="flex-shrink-0">
-            <h1 className="text-2xl font-serif font-semibold text-gold">K & O</h1>
+            <h1 className="text-2xl font-serif font-semibold text-gold">
+              K & O
+            </h1>
           </div>
 
           {/* Desktop Navigation */}
@@ -33,7 +35,7 @@ const Navigation = () => {
                   key={item.name}
                   smooth
                   to={`/${item.href}`} // React Router HashLink
-                  className="text-foreground hover:text-gold transition-colors duration-300 font-sans text-sm font-medium"
+                  className="text-foreground hover:text-gold transition-colors duration-300 text-sm font-medium"
                 >
                   {item.name}
                 </HashLink>
@@ -49,7 +51,11 @@ const Navigation = () => {
               onClick={() => setIsOpen(!isOpen)}
               className="text-foreground hover:text-gold"
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </Button>
           </div>
         </div>

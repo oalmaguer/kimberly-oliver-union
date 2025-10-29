@@ -6,7 +6,7 @@ import dressImg from "@/assets/dress.png";
 import suitImg from "@/assets/suit.png";
 const DressCodeSection = () => {
   return (
-    <section id="vestimenta" className="py-20 bg-creamw">
+    <section id="vestimenta" className="py-10 bg-creamw">
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-8">
           <h2 className="text-4xl md:text-6xl font-serif text-gold mb-12 old-standard-regular">
