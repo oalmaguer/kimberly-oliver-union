@@ -35,7 +35,7 @@ const Navigation = () => {
                   key={item.name}
                   smooth
                   to={`/${item.href}`} // React Router HashLink
-                  className="text-foreground hover:text-gold transition-colors duration-300 text-sm font-medium"
+                  className="text-foreground hover:text-gold transition-colors duration-300 playfair text-sm font-medium"
                 >
                   {item.name}
                 </HashLink>
