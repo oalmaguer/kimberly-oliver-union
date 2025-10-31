@@ -238,9 +238,7 @@ const RSVPSection = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid  gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="name" className="font-sans text-foreground">
-                    Nombre Completo *
-                  </Label>
+                  <Label htmlFor="name" className="font-sans text-foreground">ESCRIBE SOLO LAS PRIMERAS 3 LETRAS DE TU NOMBRE Y SELECCIONALO *</Label> <br />
                   <Popover open={openPopover} onOpenChange={setOpenPopover}>
                     <PopoverTrigger asChild>
                       <div>
@@ -372,7 +370,7 @@ const RSVPSection = () => {
           </p>
         </div>
       </div>
-    </section>
+    </section >
   );
 };
 
