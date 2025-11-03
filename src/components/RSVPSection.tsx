@@ -117,19 +117,10 @@ const RSVPSection = () => {
   };
 
   const handleInputChange = (field: string, value: string) => {
-    if (!value.length) {
+    if (!value.length && field === "name") {
       setSelectedUserId(null);
       //reset form data
-      setFormData((prev) => ({
-        ...prev,
-        name: "",
-        email: "",
-        phone: "",
-        attendance: "",
-        companions: "",
-        dietaryRestrictions: "",
-        message: "",
-      }));
+
     }
     setFormData((prev) => ({
       ...prev,
