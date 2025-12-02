@@ -13,7 +13,6 @@ const Navigation = () => {
     { name: "Itinerario", href: "#itinerario" },
     { name: "Vestimenta", href: "#vestimenta" },
     { name: "Regalos", href: "#regalos" },
-    { name: "RSVP", href: "#rsvp" },
     { name: "Galería", href: "#galeria" },
   ];
 
