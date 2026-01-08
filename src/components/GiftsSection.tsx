@@ -79,17 +79,17 @@ const GiftsSection = () => {
                 Para contribuir a nuestros sueños
               </p>
               <div className="tarjeta text-md text-muted-foreground font-sans mb-4 flex flex-col gap-2">
-                <p className="raleway ">Deposito a cuenta Santander</p>
+                <p className="raleway ">Deposito a cuenta BBVA</p>
                 <p className="raleway">
                   Tarjeta:{" "}
                   <span
                     className="cursor-pointer text-gold hover:text-gold-dark underline "
-                    onClick={() => copyToClipboard("5579 1003 9392 9011")}
+                    onClick={() => copyToClipboard("4152 3144 0672 9254")}
                   >
-                    5579 1003 9392 9011
+                    4152 3144 0672 9254
                   </span>
                 </p>
-                <p className="raleway">Nombre: Oliver Almaguer Tostado</p>
+                <p className="raleway">Nombre: Kimberly Covarrubias</p>
               </div>
             </CardContent>
           </Card>
